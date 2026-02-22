@@ -1,13 +1,16 @@
-from flask import Flask, jsonify
-import lxml
+from flask import Flask, jsonify, render_template, request
+import json
+import os
+import re
 import requests
 from bs4 import BeautifulSoup
-import re
-import time
-from flask import Response
-import json
-from googlesearch import search #pip install googlesearch-python
-from flask import render_template
+from googlesearch import search
+
+from batting import parse_batting
+from bowling import parse_bowling
+from cricinfo_dots import get_dots_by_bowler_cricinfo
+from cricinfo_mom import get_man_of_the_match
+from fielding import build_fielding_from_batting
 
 app = Flask(__name__)
 
@@ -143,6 +146,97 @@ def schedule():
             matches.append(f"{match_date} - {match_details}")
     
     return jsonify(matches)
+
+
+# ---------------------------------------------------------------------------
+# Completed match (by ID) - same ID works for any game in the tournament
+# URL pattern: https://www.cricbuzz.com/live-cricket-scorecard/<match_id>/
+# See CRICBUZZ_MATCH_URLS.md
+# ---------------------------------------------------------------------------
+
+MATCH_RESULTS_DIR = "match_results"
+
+
+def _match_title_vs_portion(soup):
+    """Extract 'Team A vs Team B' from page title (e.g. 'England vs Sri Lanka')."""
+    title_el = soup.find("title") or soup.find("h1")
+    if not title_el:
+        return None
+    raw = title_el.get_text(strip=True)
+    if " - Scorecard" in raw:
+        raw = raw.replace(" - Scorecard", "").strip()
+    if " | " in raw:
+        raw = raw.split(" | ", 1)[-1].strip()
+    # Take first segment before comma: "England vs Sri Lanka, 42nd Match..." -> "England vs Sri Lanka"
+    if "," in raw:
+        raw = raw.split(",")[0].strip()
+    if " vs " in raw:
+        return raw
+    return None
+
+
+def _save_match_result(match_id, vs_portion, data):
+    """Save match JSON to match_results/<vs_portion>_<match_id>.json. Returns path."""
+    if not vs_portion:
+        vs_portion = "match"
+    safe = re.sub(r'[<>:"/\\|?*]', "", vs_portion).strip() or "match"
+    os.makedirs(MATCH_RESULTS_DIR, exist_ok=True)
+    filename = "{}_{}.json".format(safe, match_id)
+    path = os.path.join(MATCH_RESULTS_DIR, filename)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+    return path
+
+
+@app.route('/match/<match_id>', methods=['GET'])
+def get_match(match_id):
+    """Fetch completed match data by Cricbuzz match ID (scorecard page).
+    Pass cricinfo_url = full ESPN Cricinfo scorecard URL for dots (0s column).
+    """
+    if not match_id.isdigit():
+        return jsonify({"error": "match_id must be numeric"}), 400
+
+    url = "https://www.cricbuzz.com/live-cricket-scorecard/{}/".format(match_id)
+    try:
+        resp = requests.get(url, timeout=15)
+        resp.raise_for_status()
+    except requests.RequestException as e:
+        return jsonify({"error": "Failed to fetch match: {}".format(str(e))}), 502
+
+    soup = BeautifulSoup(resp.text, "lxml")
+
+    batting_records = parse_batting(soup)
+    bowling_records = parse_bowling(soup)
+
+    cricinfo_url = (request.args.get("cricinfo_url") or "").strip()
+    dots_by_bowler = {}
+    man_of_the_match = None
+    if cricinfo_url and "/full-scorecard" in cricinfo_url:
+        dots_by_bowler = get_dots_by_bowler_cricinfo(cricinfo_url)
+        man_of_the_match = get_man_of_the_match(cricinfo_url)
+
+    for record in bowling_records:
+        record["dots"] = dots_by_bowler.get(record["player"], 0)
+
+    batting_players = [r["player"] for r in batting_records if r.get("player")]
+    bowling_players = [r["player"] for r in bowling_records if r.get("player")]
+    fielding = build_fielding_from_batting(
+        batting_records, batting_players, bowling_players
+    )
+
+    out = {
+        "match_id": match_id,
+        "batting": batting_records,
+        "bowling": bowling_records,
+        "fielding": fielding,
+        "scorecard_url": url,
+        "man_of_the_match": man_of_the_match,
+    }
+
+    vs_portion = _match_title_vs_portion(soup)
+    path = _save_match_result(match_id, vs_portion, out)
+    message = "{} saved successfully to {}".format(vs_portion or "Match", path)
+    return message, 200, {"Content-Type": "text/plain; charset=utf-8"}
 
 
 @app.route('/live')

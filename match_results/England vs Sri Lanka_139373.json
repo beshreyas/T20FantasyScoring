@@ -1,0 +1,317 @@
+{
+  "match_id": "139373",
+  "batting": [
+    {
+      "player": "Philip Salt",
+      "dismissal": "c Dushan Hemantha b Dunith Wellalage",
+      "runs": 62,
+      "balls": 40,
+      "fours": 6,
+      "sixes": 2
+    },
+    {
+      "player": "Jos Buttler",
+      "dismissal": "lbw b Dunith Wellalage",
+      "runs": 7,
+      "balls": 14,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Jacob Bethell",
+      "dismissal": "c Dilshan Madushanka b Maheesh Theekshana",
+      "runs": 3,
+      "balls": 4,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Tom Banton",
+      "dismissal": "run out (Dasun Shanaka)",
+      "runs": 6,
+      "balls": 7,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Harry Brook",
+      "dismissal": "lbw b Dunith Wellalage",
+      "runs": 14,
+      "balls": 7,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Sam Curran",
+      "dismissal": "c Kamil Mishara b Dushmantha Chameera",
+      "runs": 11,
+      "balls": 11,
+      "fours": 0,
+      "sixes": 1
+    },
+    {
+      "player": "Will Jacks",
+      "dismissal": "c Dunith Wellalage b Dilshan Madushanka",
+      "runs": 21,
+      "balls": 14,
+      "fours": 4,
+      "sixes": 0
+    },
+    {
+      "player": "Liam Dawson",
+      "dismissal": "c Dasun Shanaka b Maheesh Theekshana",
+      "runs": 6,
+      "balls": 11,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Jamie Overton",
+      "dismissal": "not out",
+      "runs": 10,
+      "balls": 10,
+      "fours": 0,
+      "sixes": 1
+    },
+    {
+      "player": "Jofra Archer",
+      "dismissal": "c Dushan Hemantha b Dilshan Madushanka",
+      "runs": 0,
+      "balls": 1,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Adil Rashid",
+      "dismissal": "not out",
+      "runs": 1,
+      "balls": 1,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Pathum Nissanka",
+      "dismissal": "c Jamie Overton b Jofra Archer",
+      "runs": 9,
+      "balls": 8,
+      "fours": 2,
+      "sixes": 0
+    },
+    {
+      "player": "Kamil Mishara",
+      "dismissal": "c Jamie Overton b Jofra Archer",
+      "runs": 6,
+      "balls": 11,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Kusal Mendis",
+      "dismissal": "c and b Will Jacks",
+      "runs": 4,
+      "balls": 4,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Pavan Rathnayake",
+      "dismissal": "c Tom Banton b Will Jacks",
+      "runs": 0,
+      "balls": 1,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Dunith Wellalage",
+      "dismissal": "c Harry Brook b Will Jacks",
+      "runs": 10,
+      "balls": 10,
+      "fours": 2,
+      "sixes": 0
+    },
+    {
+      "player": "Kamindu Mendis",
+      "dismissal": "c and b Liam Dawson",
+      "runs": 13,
+      "balls": 11,
+      "fours": 1,
+      "sixes": 1
+    },
+    {
+      "player": "Dasun Shanaka",
+      "dismissal": "c Tom Banton b Adil Rashid",
+      "runs": 30,
+      "balls": 24,
+      "fours": 1,
+      "sixes": 2
+    },
+    {
+      "player": "Dushan Hemantha",
+      "dismissal": "hit wkt b Jamie Overton",
+      "runs": 5,
+      "balls": 8,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Dushmantha Chameera",
+      "dismissal": "b Liam Dawson",
+      "runs": 6,
+      "balls": 13,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Maheesh Theekshana",
+      "dismissal": "not out",
+      "runs": 10,
+      "balls": 8,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Dilshan Madushanka",
+      "dismissal": "b Adil Rashid",
+      "runs": 0,
+      "balls": 2,
+      "fours": 0,
+      "sixes": 0
+    }
+  ],
+  "bowling": [
+    {
+      "player": "Dilshan Madushanka",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 25,
+      "wickets": 2,
+      "dots": 0
+    },
+    {
+      "player": "Dunith Wellalage",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 26,
+      "wickets": 3,
+      "dots": 0
+    },
+    {
+      "player": "Maheesh Theekshana",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 21,
+      "wickets": 2,
+      "dots": 0
+    },
+    {
+      "player": "Dushan Hemantha",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 38,
+      "wickets": 0,
+      "dots": 0
+    },
+    {
+      "player": "Dushmantha Chameera",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 34,
+      "wickets": 1,
+      "dots": 0
+    },
+    {
+      "player": "Jofra Archer",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 20,
+      "wickets": 2,
+      "dots": 0
+    },
+    {
+      "player": "Will Jacks",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 22,
+      "wickets": 3,
+      "dots": 0
+    },
+    {
+      "player": "Liam Dawson",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 27,
+      "wickets": 2,
+      "dots": 0
+    },
+    {
+      "player": "Adil Rashid",
+      "balls": 22,
+      "maidens": 0,
+      "runs": 13,
+      "wickets": 2,
+      "dots": 0
+    },
+    {
+      "player": "Jamie Overton",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 13,
+      "wickets": 1,
+      "dots": 0
+    }
+  ],
+  "fielding": {
+    "Dushan Hemantha": {
+      "catches": 2,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Dilshan Madushanka": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Dasun Shanaka": {
+      "catches": 1,
+      "runout": 1,
+      "stumpings": 0
+    },
+    "Kamil Mishara": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Dunith Wellalage": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Jamie Overton": {
+      "catches": 2,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Will Jacks": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Tom Banton": {
+      "catches": 2,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Harry Brook": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Liam Dawson": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    }
+  },
+  "scorecard_url": "https://www.cricbuzz.com/live-cricket-scorecard/139373/",
+  "man_of_the_match": null
+}

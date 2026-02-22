@@ -1,4 +1,28 @@
+# Virtual environment
 cric_venv/
+venv/
+.venv/
+env/
+
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+
 # macOS
 .DS_Store
-.github/workflows
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
