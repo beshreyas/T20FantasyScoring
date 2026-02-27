@@ -11,6 +11,7 @@ from bowling import parse_bowling
 from cricinfo_dots import get_dots_by_bowler_cricinfo
 from cricinfo_mom import get_man_of_the_match
 from fielding import build_fielding_from_batting
+from calculate_points import recalculate_all, PLAYER_POINTS_DIR
 
 app = Flask(__name__)
 
@@ -231,10 +232,18 @@ def get_match(match_id):
         "fielding": fielding,
         "scorecard_url": url,
         "man_of_the_match": man_of_the_match,
+        "cricinfo_url": cricinfo_url or None,
     }
 
     vs_portion = _match_title_vs_portion(soup)
     path = _save_match_result(match_id, vs_portion, out)
+
+    # Auto-recalculate fantasy points after saving match result
+    try:
+        recalculate_all()
+    except Exception as e:
+        print("Warning: Fantasy recalculation failed: {}".format(e))
+
     message = "{} saved successfully to {}".format(vs_portion or "Match", path)
     return message, 200, {"Content-Type": "text/plain; charset=utf-8"}
 
@@ -256,9 +265,129 @@ def live_matches():
     
     return jsonify(live_matches)
 
+# ---------------------------------------------------------------------------
+# Fantasy Scoring Endpoints
+# ---------------------------------------------------------------------------
+
+@app.route('/fantasy/leaderboard')
+def fantasy_leaderboard():
+    """Return player leaderboard sorted by total fantasy points."""
+    fpath = os.path.join(PLAYER_POINTS_DIR, "leaderboard.json")
+    if not os.path.isfile(fpath):
+        return jsonify([]), 200
+    with open(fpath, encoding="utf-8") as f:
+        return jsonify(json.load(f))
+
+
+@app.route('/fantasy/teams')
+def fantasy_teams():
+    """Return team leaderboard sorted by aggregate fantasy points."""
+    fpath = os.path.join(PLAYER_POINTS_DIR, "team_leaderboard.json")
+    if not os.path.isfile(fpath):
+        return jsonify([]), 200
+    with open(fpath, encoding="utf-8") as f:
+        return jsonify(json.load(f))
+
+
+@app.route('/fantasy/player/<player_name>')
+def fantasy_player(player_name):
+    """Return per-match point breakdown for a specific player."""
+    fpath = os.path.join(PLAYER_POINTS_DIR, "all_player_points.json")
+    if not os.path.isfile(fpath):
+        return jsonify({"error": "No points data yet"}), 404
+    with open(fpath, encoding="utf-8") as f:
+        all_players = json.load(f)
+    search_lower = player_name.lower()
+    for p in all_players:
+        if search_lower in p["player_name"].lower():
+            return jsonify(p)
+    return jsonify({"error": "Player not found"}), 404
+
+
+@app.route('/fantasy/recalculate', methods=['GET', 'POST'])
+def fantasy_recalculate():
+    """Manually trigger a full recalculation of fantasy points."""
+    try:
+        leaderboard, team_lb = recalculate_all()
+        return jsonify({
+            "status": "ok",
+            "players_scored": len(leaderboard),
+            "teams": len(team_lb),
+        })
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/fantasy/team/<team_name>')
+def fantasy_team_players(team_name):
+    """Return all players for a given team with their full point details."""
+    fpath = os.path.join(PLAYER_POINTS_DIR, "all_player_points.json")
+    if not os.path.isfile(fpath):
+        return jsonify([]), 200
+    with open(fpath, encoding="utf-8") as f:
+        all_players = json.load(f)
+    search_lower = team_name.lower()
+    team_players = [p for p in all_players if p.get("team", "").lower() == search_lower]
+    team_players.sort(key=lambda p: p["total_points"], reverse=True)
+    return jsonify(team_players)
+
+
+@app.route('/fantasy/matches')
+def fantasy_matches():
+    """Return list of already-scraped matches with IDs and cricinfo URLs."""
+    if not os.path.isdir(MATCH_RESULTS_DIR):
+        return jsonify([]), 200
+    matches = []
+    for fname in sorted(os.listdir(MATCH_RESULTS_DIR)):
+        if not fname.endswith(".json"):
+            continue
+        fpath = os.path.join(MATCH_RESULTS_DIR, fname)
+        try:
+            with open(fpath, encoding="utf-8") as f:
+                data = json.load(f)
+        except Exception:
+            continue
+        match_name = fname.replace(".json", "").rsplit("_", 1)[0] if "_" in fname else fname.replace(".json", "")
+        matches.append({
+            "match_id": data.get("match_id", ""),
+            "match_name": match_name,
+            "cricinfo_url": data.get("cricinfo_url", ""),
+            "filename": fname,
+        })
+    return jsonify(matches)
+
+
+@app.route('/fantasy/match/<match_id>', methods=['DELETE'])
+def fantasy_delete_match(match_id):
+    """Delete a match result file and recalculate fantasy points."""
+    if not os.path.isdir(MATCH_RESULTS_DIR):
+        return jsonify({"error": "No matches directory"}), 404
+    deleted = False
+    for fname in os.listdir(MATCH_RESULTS_DIR):
+        if not fname.endswith(".json"):
+            continue
+        fpath = os.path.join(MATCH_RESULTS_DIR, fname)
+        try:
+            with open(fpath, encoding="utf-8") as f:
+                data = json.load(f)
+            if str(data.get("match_id", "")) == str(match_id):
+                os.remove(fpath)
+                deleted = True
+                break
+        except Exception:
+            continue
+    if not deleted:
+        return jsonify({"error": "Match not found"}), 404
+    try:
+        recalculate_all()
+    except Exception as e:
+        print("Warning: Fantasy recalculation failed: {}".format(e))
+    return jsonify({"status": "ok", "match_id": match_id})
+
+
 @app.route('/')
 def website():
     return render_template('index.html')
 
-if __name__ =="__main__":
+if __name__ == "__main__":
     app.run(debug=True)

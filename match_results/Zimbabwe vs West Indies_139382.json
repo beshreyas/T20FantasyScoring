@@ -1,0 +1,292 @@
+{
+  "match_id": "139382",
+  "batting": [
+    {
+      "player": "Brandon King",
+      "dismissal": "c Tashinga Musekiwa b Richard Ngarava",
+      "runs": 9,
+      "balls": 12,
+      "fours": 0,
+      "sixes": 1
+    },
+    {
+      "player": "Shai Hope (c & wk)",
+      "dismissal": "c Brian Bennett b Brad Evans",
+      "runs": 14,
+      "balls": 12,
+      "fours": 2,
+      "sixes": 0
+    },
+    {
+      "player": "Shimron Hetmyer",
+      "dismissal": "c Brian Bennett b Graeme Cremer",
+      "runs": 85,
+      "balls": 34,
+      "fours": 7,
+      "sixes": 7
+    },
+    {
+      "player": "Rovman Powell",
+      "dismissal": "c Tashinga Musekiwa b Blessing Muzarabani",
+      "runs": 59,
+      "balls": 35,
+      "fours": 4,
+      "sixes": 4
+    },
+    {
+      "player": "Sherfane Rutherford",
+      "dismissal": "not out",
+      "runs": 31,
+      "balls": 13,
+      "fours": 3,
+      "sixes": 2
+    },
+    {
+      "player": "Romario Shepherd",
+      "dismissal": "c Ryan Burl b Richard Ngarava",
+      "runs": 21,
+      "balls": 10,
+      "fours": 0,
+      "sixes": 3
+    },
+    {
+      "player": "Jason Holder",
+      "dismissal": "c Tony Munyonga b Blessing Muzarabani",
+      "runs": 13,
+      "balls": 4,
+      "fours": 0,
+      "sixes": 2
+    },
+    {
+      "player": "Matthew Forde",
+      "dismissal": "not out",
+      "runs": 1,
+      "balls": 1,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Tadiwanashe Marumani",
+      "dismissal": "c Shimron Hetmyer b Matthew Forde",
+      "runs": 14,
+      "balls": 8,
+      "fours": 2,
+      "sixes": 1
+    },
+    {
+      "player": "Brian Bennett",
+      "dismissal": "b Akeal Hosein",
+      "runs": 5,
+      "balls": 5,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Dion Myers",
+      "dismissal": "b Gudakesh Motie",
+      "runs": 28,
+      "balls": 15,
+      "fours": 3,
+      "sixes": 2
+    },
+    {
+      "player": "Ryan Burl",
+      "dismissal": "c Shimron Hetmyer b Akeal Hosein",
+      "runs": 0,
+      "balls": 3,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Sikandar Raza",
+      "dismissal": "b Gudakesh Motie",
+      "runs": 27,
+      "balls": 20,
+      "fours": 2,
+      "sixes": 2
+    },
+    {
+      "player": "Tony Munyonga",
+      "dismissal": "c Shamar Joseph b Gudakesh Motie",
+      "runs": 14,
+      "balls": 16,
+      "fours": 0,
+      "sixes": 1
+    },
+    {
+      "player": "Tashinga Musekiwa",
+      "dismissal": "b Gudakesh Motie",
+      "runs": 0,
+      "balls": 1,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Brad Evans",
+      "dismissal": "c Akeal Hosein b Matthew Forde",
+      "runs": 43,
+      "balls": 21,
+      "fours": 2,
+      "sixes": 5
+    },
+    {
+      "player": "Graeme Cremer",
+      "dismissal": "c and b Jason Holder",
+      "runs": 0,
+      "balls": 6,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Blessing Muzarabani",
+      "dismissal": "c Shamar Joseph b Akeal Hosein",
+      "runs": 0,
+      "balls": 5,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Richard Ngarava",
+      "dismissal": "not out",
+      "runs": 7,
+      "balls": 6,
+      "fours": 0,
+      "sixes": 1
+    }
+  ],
+  "bowling": [
+    {
+      "player": "Richard Ngarava",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 47,
+      "wickets": 2,
+      "dots": 10
+    },
+    {
+      "player": "Blessing Muzarabani",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 42,
+      "wickets": 2,
+      "dots": 9
+    },
+    {
+      "player": "Brad Evans",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 46,
+      "wickets": 1,
+      "dots": 7
+    },
+    {
+      "player": "Graeme Cremer",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 38,
+      "wickets": 1,
+      "dots": 6
+    },
+    {
+      "player": "Sikandar Raza",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 52,
+      "wickets": 0,
+      "dots": 4
+    },
+    {
+      "player": "Dion Myers",
+      "balls": 6,
+      "maidens": 0,
+      "runs": 19,
+      "wickets": 0,
+      "dots": 0
+    },
+    {
+      "player": "Akeal Hosein",
+      "balls": 24,
+      "maidens": 1,
+      "runs": 28,
+      "wickets": 3,
+      "dots": 17
+    },
+    {
+      "player": "Matthew Forde",
+      "balls": 22,
+      "maidens": 0,
+      "runs": 27,
+      "wickets": 2,
+      "dots": 12
+    },
+    {
+      "player": "Gudakesh Motie",
+      "balls": 24,
+      "maidens": 1,
+      "runs": 28,
+      "wickets": 4,
+      "dots": 12
+    },
+    {
+      "player": "Shamar Joseph",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 35,
+      "wickets": 0,
+      "dots": 7
+    },
+    {
+      "player": "Jason Holder",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 25,
+      "wickets": 1,
+      "dots": 10
+    }
+  ],
+  "fielding": {
+    "Tashinga Musekiwa": {
+      "catches": 2,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Brian Bennett": {
+      "catches": 2,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Ryan Burl": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Tony Munyonga": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Shimron Hetmyer": {
+      "catches": 2,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Shamar Joseph": {
+      "catches": 2,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Akeal Hosein": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Jason Holder": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    }
+  },
+  "scorecard_url": "https://www.cricbuzz.com/live-cricket-scorecard/139382/",
+  "man_of_the_match": "Shimron Hetmyer",
+  "cricinfo_url": "https://www.espncricinfo.com/series/icc-men-s-t20-world-cup-2025-26-1502138/west-indies-vs-zimbabwe-44th-match-super-eights-group-1-1512762/full-scorecard"
+}

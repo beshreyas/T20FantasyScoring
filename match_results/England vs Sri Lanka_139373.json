@@ -185,7 +185,7 @@
       "maidens": 0,
       "runs": 25,
       "wickets": 2,
-      "dots": 0
+      "dots": 12
     },
     {
       "player": "Dunith Wellalage",
@@ -193,7 +193,7 @@
       "maidens": 0,
       "runs": 26,
       "wickets": 3,
-      "dots": 0
+      "dots": 11
     },
     {
       "player": "Maheesh Theekshana",
@@ -201,7 +201,7 @@
       "maidens": 0,
       "runs": 21,
       "wickets": 2,
-      "dots": 0
+      "dots": 9
     },
     {
       "player": "Dushan Hemantha",
@@ -209,7 +209,7 @@
       "maidens": 0,
       "runs": 38,
       "wickets": 0,
-      "dots": 0
+      "dots": 4
     },
     {
       "player": "Dushmantha Chameera",
@@ -217,7 +217,7 @@
       "maidens": 0,
       "runs": 34,
       "wickets": 1,
-      "dots": 0
+      "dots": 9
     },
     {
       "player": "Jofra Archer",
@@ -225,7 +225,7 @@
       "maidens": 0,
       "runs": 20,
       "wickets": 2,
-      "dots": 0
+      "dots": 11
     },
     {
       "player": "Will Jacks",
@@ -233,7 +233,7 @@
       "maidens": 0,
       "runs": 22,
       "wickets": 3,
-      "dots": 0
+      "dots": 16
     },
     {
       "player": "Liam Dawson",
@@ -241,7 +241,7 @@
       "maidens": 0,
       "runs": 27,
       "wickets": 2,
-      "dots": 0
+      "dots": 9
     },
     {
       "player": "Adil Rashid",
@@ -249,7 +249,7 @@
       "maidens": 0,
       "runs": 13,
       "wickets": 2,
-      "dots": 0
+      "dots": 13
     },
     {
       "player": "Jamie Overton",
@@ -257,7 +257,7 @@
       "maidens": 0,
       "runs": 13,
       "wickets": 1,
-      "dots": 0
+      "dots": 5
     }
   ],
   "fielding": {
@@ -313,5 +313,5 @@
     }
   },
   "scorecard_url": "https://www.cricbuzz.com/live-cricket-scorecard/139373/",
-  "man_of_the_match": null
+  "man_of_the_match": "Will Jacks"
 }
