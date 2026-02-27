@@ -1,0 +1,333 @@
+{
+  "match_id": "139381",
+  "batting": [
+    {
+      "player": "Aiden Markram",
+      "dismissal": "c Hardik Pandya b Arshdeep Singh",
+      "runs": 4,
+      "balls": 7,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Quinton de Kock",
+      "dismissal": "b Jasprit Bumrah",
+      "runs": 6,
+      "balls": 7,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Ryan Rickelton",
+      "dismissal": "c Shivam Dube b Jasprit Bumrah",
+      "runs": 7,
+      "balls": 7,
+      "fours": 0,
+      "sixes": 1
+    },
+    {
+      "player": "Dewald Brevis",
+      "dismissal": "c Abhishek Sharma b Shivam Dube",
+      "runs": 45,
+      "balls": 29,
+      "fours": 3,
+      "sixes": 3
+    },
+    {
+      "player": "David Miller",
+      "dismissal": "c Tilak Varma b Varun Chakaravarthy",
+      "runs": 63,
+      "balls": 35,
+      "fours": 7,
+      "sixes": 3
+    },
+    {
+      "player": "Tristan Stubbs",
+      "dismissal": "not out",
+      "runs": 44,
+      "balls": 24,
+      "fours": 1,
+      "sixes": 3
+    },
+    {
+      "player": "Marco Jansen",
+      "dismissal": "c Rinku Singh b Arshdeep Singh",
+      "runs": 2,
+      "balls": 6,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Corbin Bosch",
+      "dismissal": "c and b Jasprit Bumrah",
+      "runs": 5,
+      "balls": 6,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Kagiso Rabada",
+      "dismissal": "not out",
+      "runs": 0,
+      "balls": 1,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Ishan Kishan",
+      "dismissal": "c Ryan Rickelton b Aiden Markram",
+      "runs": 0,
+      "balls": 4,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Abhishek Sharma",
+      "dismissal": "c Corbin Bosch b Marco Jansen",
+      "runs": 15,
+      "balls": 12,
+      "fours": 2,
+      "sixes": 1
+    },
+    {
+      "player": "Tilak Varma",
+      "dismissal": "c Quinton de Kock b Marco Jansen",
+      "runs": 1,
+      "balls": 2,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Suryakumar Yadav",
+      "dismissal": "c Dewald Brevis b Corbin Bosch",
+      "runs": 18,
+      "balls": 22,
+      "fours": 2,
+      "sixes": 0
+    },
+    {
+      "player": "Washington Sundar",
+      "dismissal": "c Quinton de Kock b Corbin Bosch",
+      "runs": 11,
+      "balls": 11,
+      "fours": 0,
+      "sixes": 1
+    },
+    {
+      "player": "Shivam Dube",
+      "dismissal": "c Lungi Ngidi b Marco Jansen",
+      "runs": 42,
+      "balls": 37,
+      "fours": 1,
+      "sixes": 3
+    },
+    {
+      "player": "Hardik Pandya",
+      "dismissal": "c Tristan Stubbs b Keshav Maharaj",
+      "runs": 18,
+      "balls": 17,
+      "fours": 0,
+      "sixes": 1
+    },
+    {
+      "player": "Rinku Singh",
+      "dismissal": "c Tristan Stubbs b Keshav Maharaj",
+      "runs": 0,
+      "balls": 2,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Arshdeep Singh",
+      "dismissal": "c Tristan Stubbs b Keshav Maharaj",
+      "runs": 1,
+      "balls": 2,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Varun Chakaravarthy",
+      "dismissal": "not out",
+      "runs": 0,
+      "balls": 3,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Jasprit Bumrah",
+      "dismissal": "c Aiden Markram b Marco Jansen",
+      "runs": 0,
+      "balls": 1,
+      "fours": 0,
+      "sixes": 0
+    }
+  ],
+  "bowling": [
+    {
+      "player": "Arshdeep Singh",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 28,
+      "wickets": 2,
+      "dots": 11
+    },
+    {
+      "player": "Jasprit Bumrah",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 15,
+      "wickets": 3,
+      "dots": 12
+    },
+    {
+      "player": "Varun Chakaravarthy",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 47,
+      "wickets": 1,
+      "dots": 0
+    },
+    {
+      "player": "Washington Sundar",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 17,
+      "wickets": 0,
+      "dots": 1
+    },
+    {
+      "player": "Hardik Pandya",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 45,
+      "wickets": 0,
+      "dots": 6
+    },
+    {
+      "player": "Shivam Dube",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 32,
+      "wickets": 1,
+      "dots": 3
+    },
+    {
+      "player": "Aiden Markram",
+      "balls": 6,
+      "maidens": 0,
+      "runs": 5,
+      "wickets": 1,
+      "dots": 4
+    },
+    {
+      "player": "Marco Jansen",
+      "balls": 23,
+      "maidens": 0,
+      "runs": 22,
+      "wickets": 4,
+      "dots": 12
+    },
+    {
+      "player": "Kagiso Rabada",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 32,
+      "wickets": 0,
+      "dots": 13
+    },
+    {
+      "player": "Lungi Ngidi",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 15,
+      "wickets": 0,
+      "dots": 11
+    },
+    {
+      "player": "Keshav Maharaj",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 24,
+      "wickets": 3,
+      "dots": 5
+    },
+    {
+      "player": "Corbin Bosch",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 12,
+      "wickets": 2,
+      "dots": 10
+    }
+  ],
+  "fielding": {
+    "Hardik Pandya": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Shivam Dube": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Abhishek Sharma": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Tilak Varma": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Rinku Singh": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Jasprit Bumrah": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Ryan Rickelton": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Corbin Bosch": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Quinton de Kock": {
+      "catches": 2,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Dewald Brevis": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Lungi Ngidi": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Tristan Stubbs": {
+      "catches": 3,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Aiden Markram": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    }
+  },
+  "scorecard_url": "https://www.cricbuzz.com/live-cricket-scorecard/139381/",
+  "man_of_the_match": "David Miller",
+  "cricinfo_url": "https://www.espncricinfo.com/series/icc-men-s-t20-world-cup-2025-26-1502138/india-vs-south-africa-43rd-match-super-eights-group-1-1512761/full-scorecard"
+}

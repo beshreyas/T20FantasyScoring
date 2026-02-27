@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T20 Fantasy Auction Hub</title>
+    <meta name="description" content="See and manage T20 fantasy auction stats, leaderboards, and team standings.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d6efd;
+            --accent: #00c9a7;
+            --dark-bg: #0b0f19;
+            --card-bg: rgba(255, 255, 255, 0.06);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --glow: 0 0 30px rgba(0, 201, 167, .15);
+        }
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: #e2e8f0;
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(11, 15, 25, .85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.35rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            color: #94a3b8 !important;
+            font-weight: 600;
+            transition: color .2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #fff !important;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 4.5rem 0 3rem;
+            text-align: center;
+            background: radial-gradient(ellipse at 50% 0%, rgba(13, 110, 253, .12) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-weight: 800;
+            font-size: 2.6rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            max-width: 520px;
+            margin: .75rem auto 0;
+        }
+
+        /* Cards */
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: transform .25s, box-shadow .25s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--glow);
+        }
+
+        .glass-card h5 {
+            font-weight: 700;
+            margin-bottom: .75rem;
+        }
+
+        .section-title {
+            font-weight: 700;
+            font-size: 1.35rem;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Badge */
+        .badge-live {
+            background: #ef4444;
+            animation: pulse 1.5s infinite;
+            font-size: .7rem;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: .5
+            }
+        }
+
+        /* List items */
+        .list-group-item {
+            background: transparent;
+            border-color: var(--card-border);
+            color: #cbd5e1;
+            font-size: .92rem;
+        }
+
+        /* Search */
+        .search-box {
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .search-box .form-control {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--card-border);
+            color: #fff;
+            border-radius: 12px;
+            padding: .65rem 1rem;
+        }
+
+        .search-box .form-control::placeholder {
+            color: #64748b;
+        }
+
+        .search-box .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 201, 167, .15);
+        }
+
+        .btn-accent {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border: none;
+            color: #fff;
+            font-weight: 600;
+            border-radius: 12px;
+            padding: .65rem 1.5rem;
+            transition: opacity .2s;
+        }
+
+        .btn-accent:hover {
+            opacity: .88;
+            color: #fff;
+        }
+
+        /* Player card */
+        .player-result {
+            display: none;
+        }
+
+        .player-result.show {
+            display: block;
+        }
+
+        .player-result .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            color: #e2e8f0;
+        }
+
+        .player-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+        }
+
+        /* Comparison */
+        .compare-section .form-control {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--card-border);
+            color: #fff;
+            border-radius: 12px;
+            padding: .65rem 1rem;
+        }
+
+        .compare-section .form-control::placeholder {
+            color: #64748b;
+        }
+
+        .compare-section .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 201, 167, .15);
+        }
+
+        .spinner-border {
+            width: 1.25rem;
+            height: 1.25rem;
+            border-width: 2px;
+        }
+
+        footer {
+            border-top: 1px solid var(--card-border);
+            color: #475569;
+            font-size: .82rem;
+        }
+
+        /* Fantasy tables */
+        .fantasy-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .fantasy-table th {
+            color: #94a3b8;
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            padding: .6rem .75rem;
+            border-bottom: 1px solid var(--card-border);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .fantasy-table td {
+            padding: .55rem .75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            font-size: .88rem;
+            vertical-align: middle;
+        }
+
+        .fantasy-table tbody tr {
+            transition: background .15s;
+        }
+
+        .fantasy-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .rank-col {
+            font-weight: 700;
+            color: var(--accent);
+            width: 40px;
+            text-align: center;
+        }
+
+        .pts-col {
+            font-weight: 700;
+            color: #f1f5f9;
+        }
+
+        /* Team badges */
+        .team-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: .75rem;
+            letter-spacing: .04em;
+        }
+
+        .team-PPT {
+            background: rgba(139, 92, 246, .25);
+            color: #c4b5fd;
+        }
+
+        .team-RamSurya {
+            background: rgba(244, 63, 94, .2);
+            color: #fda4af;
+        }
+
+        .team-RSK {
+            background: rgba(34, 197, 94, .2);
+            color: #86efac;
+        }
+
+        .team-CNI {
+            background: rgba(59, 130, 246, .2);
+            color: #93c5fd;
+        }
+
+        .team-GKKani {
+            background: rgba(251, 191, 36, .2);
+            color: #fcd34d;
+        }
+
+        .team-Unknown {
+            background: rgba(148, 163, 184, .15);
+            color: #94a3b8;
+        }
+
+        /* Clickable rows */
+        .clickable-row {
+            cursor: pointer;
+        }
+
+        .clickable-row:hover {
+            background: rgba(255, 255, 255, 0.06) !important;
+        }
+
+        .clickable-name {
+            cursor: pointer;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .clickable-name:hover {
+            text-decoration: underline;
+        }
+
+        /* Back button */
+        .btn-back {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--card-border);
+            color: #94a3b8;
+            border-radius: 10px;
+            padding: .4rem 1rem;
+            font-size: .85rem;
+            font-weight: 600;
+            transition: all .2s;
+        }
+
+        .btn-back:hover {
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        /* Player Detail Modal */
+        .modal-content {
+            background: #131927;
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            color: #e2e8f0;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .modal-header .btn-close {
+            filter: invert(1) grayscale(1) brightness(2);
+        }
+
+        .modal-body {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .modal-body::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 3px;
+        }
+
+        .modal-body::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        /* View sections */
+        .view-section {
+            display: none;
+        }
+
+        .view-section.active {
+            display: block;
+        }
+
+        /* Add Match form */
+        .add-match-form .form-control {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--card-border);
+            color: #fff;
+            border-radius: 12px;
+            padding: .65rem 1rem;
+        }
+
+        .add-match-form .form-control::placeholder {
+            color: #64748b;
+        }
+
+        .add-match-form .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 201, 167, .15);
+        }
+
+        .add-match-form .form-label {
+            color: #94a3b8;
+            font-weight: 600;
+            font-size: .85rem;
+        }
+
+        .status-box {
+            padding: .75rem 1rem;
+            border-radius: 12px;
+            font-size: .9rem;
+            margin-top: 1rem;
+        }
+
+        .status-box.success {
+            background: rgba(34, 197, 94, .15);
+            color: #86efac;
+            border: 1px solid rgba(34, 197, 94, .25);
+        }
+
+        .status-box.error {
+            background: rgba(239, 68, 68, .15);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, .25);
+        }
+
+        .status-box.loading {
+            background: rgba(59, 130, 246, .1);
+            color: #93c5fd;
+            border: 1px solid rgba(59, 130, 246, .2);
+        }
+
+        .match-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: .6rem .75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .match-list-item:last-child {
+            border-bottom: none;
+        }
+
+        .match-list-item .match-name {
+            font-weight: 600;
+        }
+
+        .match-list-item .match-id-label {
+            color: #64748b;
+            font-size: .8rem;
+        }
+
+        .btn-delete-match {
+            background: rgba(239, 68, 68, .15);
+            border: 1px solid rgba(239, 68, 68, .3);
+            color: #fca5a5;
+            border-radius: 8px;
+            padding: 2px 10px;
+            font-size: .78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .2s;
+        }
+
+        .btn-delete-match:hover {
+            background: rgba(239, 68, 68, .3);
+            color: #fff;
+        }
+
+        /* Multi-match modal */
+        #addMatchModal .modal-content {
+            background: #131927;
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            color: #e2e8f0;
+        }
+
+        #addMatchModal .modal-header {
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        #addMatchModal .modal-header .btn-close {
+            filter: invert(1) grayscale(1) brightness(2);
+        }
+
+        #addMatchModal .modal-body {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .match-entry-row {
+            display: flex;
+            gap: .5rem;
+            align-items: flex-end;
+            margin-bottom: .75rem;
+            padding-bottom: .75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .match-entry-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .match-entry-row .form-control {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--card-border);
+            color: #fff;
+            border-radius: 10px;
+            padding: .5rem .75rem;
+            font-size: .85rem;
+        }
+
+        .match-entry-row .form-control::placeholder {
+            color: #64748b;
+        }
+
+        .match-entry-row .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 201, 167, .15);
+        }
+
+        .match-entry-row .form-label {
+            color: #94a3b8;
+            font-weight: 600;
+            font-size: .75rem;
+            margin-bottom: .2rem;
+        }
+
+        .btn-remove-entry {
+            background: none;
+            border: none;
+            color: #ef4444;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: .3rem;
+            line-height: 1;
+        }
+
+        .btn-remove-entry:hover {
+            color: #fca5a5;
+        }
+
+        .btn-add-entry {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px dashed var(--card-border);
+            color: #94a3b8;
+            border-radius: 10px;
+            padding: .5rem;
+            font-size: .85rem;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            transition: all .2s;
+        }
+
+        .btn-add-entry:hover {
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .modal-footer {
+            border-top: 1px solid var(--card-border);
+        }
+
+        .progress-log {
+            max-height: 200px;
+            overflow-y: auto;
+            font-size: .82rem;
+            margin-top: .75rem;
+        }
+
+        .progress-log .log-item {
+            padding: .3rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .progress-log .log-success {
+            color: #86efac;
+        }
+
+        .progress-log .log-error {
+            color: #fca5a5;
+        }
+
+        .progress-log .log-loading {
+            color: #93c5fd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#" onclick="showView('main'); return false;">🏏 T20 Fantasy Auction Hub</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            onclick="showView('addMatch'); loadExistingMatches(); return false;">Add Match</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>T20 <span>Fantasy Auction Hub</span></h1>
+            <p>View and manage T20 fantasy auction stats, team standings, and leaderboards — all in one place.</p>
+        </div>
+    </section>
+
+    <!-- ============ MAIN VIEW ============ -->
+    <div id="mainView" class="view-section active">
+        <div class="container pb-5">
+
+            <!-- Team Standings (TABLE at the very top) -->
+            <section id="teamStandings" class="mb-5">
+                <h2 class="section-title">🏅 Team Standings</h2>
+                <div class="glass-card">
+                    <div id="teamLoading" class="text-center py-3">
+                        <div class="spinner-border text-info" role="status"></div>
+                    </div>
+                    <div id="teamContent" style="display:none;">
+                        <div class="table-responsive">
+                            <table class="fantasy-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Team</th>
+                                        <th>Players</th>
+                                        <th class="text-end">Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="teamBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <p id="teamEmpty" class="text-center text-secondary mb-0" style="display:none;">No team data yet.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Fantasy Leaderboard -->
+            <section id="fantasy" class="mb-5">
+                <h2 class="section-title">🏆 Fantasy Leaderboard</h2>
+                <div class="glass-card">
+                    <div id="fantasyLoading" class="text-center py-3">
+                        <div class="spinner-border text-info" role="status"></div>
+                    </div>
+                    <div id="fantasyContent" style="display:none;">
+                        <div class="table-responsive">
+                            <table class="fantasy-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Player</th>
+                                        <th>Team</th>
+                                        <th>M</th>
+                                        <th class="text-end">Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="fantasyBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <p id="fantasyEmpty" class="text-center text-secondary mb-0" style="display:none;">No fantasy data
+                        yet. Score a match first!</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- ============ TEAM PLAYERS VIEW ============ -->
+    <div id="teamPlayersView" class="view-section">
+        <div class="container pb-5 pt-4">
+            <button class="btn-back mb-3" onclick="showView('main')">← Back to Standings</button>
+            <h2 class="section-title" id="teamPlayersTitle">Team Players</h2>
+            <div class="glass-card">
+                <div id="teamPlayersLoading" class="text-center py-3">
+                    <div class="spinner-border text-info" role="status"></div>
+                </div>
+                <div id="teamPlayersContent" style="display:none;">
+                    <div class="table-responsive">
+                        <table class="fantasy-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Player</th>
+                                    <th>M</th>
+                                    <th class="text-end">Points</th>
+                                </tr>
+                            </thead>
+                            <tbody id="teamPlayersBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <p id="teamPlayersEmpty" class="text-center text-secondary mb-0" style="display:none;">No players found
+                    for this team.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ ADD MATCH VIEW ============ -->
+    <div id="addMatchView" class="view-section">
+        <div class="container pb-5 pt-4">
+            <button class="btn-back mb-3" onclick="showView('main')">← Back to Standings</button>
+            <h2 class="section-title">➕ Add Match Details</h2>
+
+            <div class="glass-card mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="mb-0">Already Added Matches</h5>
+                    <button class="btn btn-accent" onclick="openAddMatchModal()">+ Add Matches</button>
+                </div>
+                <div id="existingMatchesLoading" class="text-center py-3">
+                    <div class="spinner-border text-info" role="status"></div>
+                </div>
+                <div id="existingMatchesList" style="display:none;"></div>
+                <p id="existingMatchesEmpty" class="text-center text-secondary mb-0" style="display:none;">No matches
+                    added yet. Click "Add Matches" to get started.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ ADD MATCH MODAL ============ -->
+    <div class="modal fade" id="addMatchModal" tabindex="-1" aria-labelledby="addMatchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="addMatchModalLabel">Scrape Match Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-secondary" style="font-size:.85rem;">Enter one or more matches. Duplicate match IDs
+                        will be re-scraped (old data replaced).</p>
+                    <div id="matchEntriesContainer"></div>
+                    <button class="btn-add-entry mt-2" onclick="addMatchEntry()">+ Add another match</button>
+                    <div id="matchSubmitProgress" class="progress-log" style="display:none;"></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-accent" id="submitAllMatchesBtn" onclick="submitAllMatches()">Fetch & Score
+                        All</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ PLAYER DETAIL MODAL ============ -->
+    <div class="modal fade" id="playerDetailModal" tabindex="-1" aria-labelledby="playerDetailLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="playerDetailLabel">Player Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div>
+                            <h4 id="modalPlayerName" class="mb-0 fw-bold"></h4>
+                            <span id="modalPlayerTeam"></span>
+                            <span class="text-secondary ms-2" id="modalPlayerTotal"></span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="fantasy-table">
+                            <thead>
+                                <tr>
+                                    <th>Match</th>
+                                    <th class="text-end">Batting</th>
+                                    <th class="text-end">Bowling</th>
+                                    <th class="text-end">Fielding</th>
+                                    <th class="text-end">MOTM</th>
+                                    <th class="text-end">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="modalMatchesBody"></tbody>
+                            <tfoot id="modalTotalRow"></tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-3">T20 Fantasy Auction Hub &mdash; For educational use only</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        /* ---------- helpers ---------- */
+        function showEl(el) { if (el) el.style.display = ''; }
+        function hideEl(el) { if (el) el.style.display = 'none'; }
+        function teamBadge(team) {
+            const cls = 'team-badge team-' + (team || 'Unknown').replace(/\s+/g, '');
+            return `<span class="${cls}">${team || '—'}</span>`;
+        }
+
+        /* ---------- View Navigation ---------- */
+        function showView(viewName) {
+            document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active'));
+            const el = document.getElementById(viewName + 'View');
+            if (el) el.classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        /* ---------- Team Standings (TABLE) ---------- */
+        fetch('/fantasy/teams')
+            .then(r => r.json())
+            .then(data => {
+                hideEl(document.getElementById('teamLoading'));
+                if (!data.length) { showEl(document.getElementById('teamEmpty')); return; }
+                const tbody = document.getElementById('teamBody');
+                data.forEach((t, i) => {
+                    const medal = i === 0 ? '🥇 ' : i === 1 ? '🥈 ' : i === 2 ? '🥉 ' : '';
+                    const tr = document.createElement('tr');
+                    tr.className = 'clickable-row';
+                    tr.onclick = () => loadTeamPlayers(t.team);
+                    tr.innerHTML = `
+                <td class="rank-col">${i + 1}</td>
+                <td>${medal}${teamBadge(t.team)}</td>
+                <td>${t.player_count}</td>
+                <td class="text-end pts-col">${Math.round(t.total_points)}</td>
+            `;
+                    tbody.appendChild(tr);
+                });
+                showEl(document.getElementById('teamContent'));
+            })
+            .catch(() => {
+                hideEl(document.getElementById('teamLoading'));
+                showEl(document.getElementById('teamEmpty'));
+            });
+
+        /* ---------- Load Team Players ---------- */
+        function loadTeamPlayers(teamName) {
+            showView('teamPlayers');
+            document.getElementById('teamPlayersTitle').innerHTML = teamBadge(teamName) + ' Players';
+            const tbody = document.getElementById('teamPlayersBody');
+            tbody.innerHTML = '';
+            hideEl(document.getElementById('teamPlayersContent'));
+            hideEl(document.getElementById('teamPlayersEmpty'));
+            showEl(document.getElementById('teamPlayersLoading'));
+
+            fetch('/fantasy/team/' + encodeURIComponent(teamName))
+                .then(r => r.json())
+                .then(data => {
+                    hideEl(document.getElementById('teamPlayersLoading'));
+                    if (!data.length) { showEl(document.getElementById('teamPlayersEmpty')); return; }
+                    data.forEach((p, i) => {
+                        const tr = document.createElement('tr');
+                        tr.className = 'clickable-row';
+                        tr.onclick = () => showPlayerDetail(p);
+                        tr.innerHTML = `
+                    <td class="rank-col">${i + 1}</td>
+                    <td class="fw-semibold clickable-name">${p.player_name}</td>
+                    <td>${p.matches ? p.matches.length : 0}</td>
+                    <td class="text-end pts-col">${Math.round(p.total_points)}</td>
+                `;
+                        tbody.appendChild(tr);
+                    });
+                    showEl(document.getElementById('teamPlayersContent'));
+                })
+                .catch(() => {
+                    hideEl(document.getElementById('teamPlayersLoading'));
+                    showEl(document.getElementById('teamPlayersEmpty'));
+                });
+        }
+
+        /* ---------- Show Player Detail Modal ---------- */
+        function showPlayerDetail(player) {
+            document.getElementById('modalPlayerName').textContent = player.player_name;
+            document.getElementById('modalPlayerTeam').innerHTML = teamBadge(player.team);
+            document.getElementById('modalPlayerTotal').textContent = 'Total: ' + Math.round(player.total_points) + ' pts';
+
+            const tbody = document.getElementById('modalMatchesBody');
+            tbody.innerHTML = '';
+            const tfoot = document.getElementById('modalTotalRow');
+            tfoot.innerHTML = '';
+
+            let totBat = 0, totBowl = 0, totField = 0, totMom = 0, totAll = 0;
+
+            if (player.matches && player.matches.length) {
+                player.matches.forEach(m => {
+                    const bat = Math.round(m.batting_points || 0);
+                    const bowl = Math.round(m.bowling_points || 0);
+                    const field = Math.round(m.fielding_points || 0);
+                    const mom = Math.round(m.mom || 0);
+                    const tot = Math.round(m.total || 0);
+                    totBat += bat; totBowl += bowl; totField += field; totMom += mom; totAll += tot;
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                <td>${m.match_name || m.match_id}</td>
+                <td class="text-end">${bat}</td>
+                <td class="text-end">${bowl}</td>
+                <td class="text-end">${field}</td>
+                <td class="text-end">${mom}</td>
+                <td class="text-end pts-col">${tot}</td>
+            `;
+                    tbody.appendChild(tr);
+                });
+            } else {
+                tbody.innerHTML = '<tr><td colspan="6" class="text-center text-secondary">No match data</td></tr>';
+            }
+
+            tfoot.innerHTML = `
+        <tr style="border-top:2px solid var(--card-border);">
+            <td class="fw-bold">Total</td>
+            <td class="text-end fw-bold">${totBat}</td>
+            <td class="text-end fw-bold">${totBowl}</td>
+            <td class="text-end fw-bold">${totField}</td>
+            <td class="text-end fw-bold">${totMom}</td>
+            <td class="text-end fw-bold pts-col">${totAll}</td>
+        </tr>
+    `;
+
+            new bootstrap.Modal(document.getElementById('playerDetailModal')).show();
+        }
+
+        /* ---------- Fantasy Leaderboard ---------- */
+        fetch('/fantasy/leaderboard')
+            .then(r => r.json())
+            .then(data => {
+                hideEl(document.getElementById('fantasyLoading'));
+                if (!data.length) { showEl(document.getElementById('fantasyEmpty')); return; }
+                const tbody = document.getElementById('fantasyBody');
+                data.forEach((p, i) => {
+                    const tr = document.createElement('tr');
+                    tr.className = 'clickable-row';
+                    tr.onclick = () => {
+                        fetch('/fantasy/player/' + encodeURIComponent(p.player_name))
+                            .then(r => r.json())
+                            .then(d => { if (!d.error) showPlayerDetail(d); })
+                            .catch(() => { });
+                    };
+                    tr.innerHTML = `
+                <td class="rank-col">${i + 1}</td>
+                <td class="fw-semibold clickable-name">${p.player_name}</td>
+                <td>${teamBadge(p.team)}</td>
+                <td>${p.matches_played}</td>
+                <td class="text-end pts-col">${Math.round(p.total_points)}</td>
+            `;
+                    tbody.appendChild(tr);
+                });
+                showEl(document.getElementById('fantasyContent'));
+            })
+            .catch(() => {
+                hideEl(document.getElementById('fantasyLoading'));
+                showEl(document.getElementById('fantasyEmpty'));
+            });
+
+        /* ---------- Add Match ---------- */
+        let existingMatchesData = [];
+
+        function loadExistingMatches() {
+            const list = document.getElementById('existingMatchesList');
+            const loading = document.getElementById('existingMatchesLoading');
+            const empty = document.getElementById('existingMatchesEmpty');
+            hideEl(list); hideEl(empty); showEl(loading);
+
+            fetch('/fantasy/matches')
+                .then(r => r.json())
+                .then(data => {
+                    hideEl(loading);
+                    existingMatchesData = data;
+                    if (!data.length) { showEl(empty); return; }
+                    list.innerHTML = '';
+                    data.forEach(m => {
+                        const div = document.createElement('div');
+                        div.className = 'match-list-item';
+                        div.innerHTML = `
+                            <div>
+                                <div class="match-name">${m.match_name || 'Match'}</div>
+                                <div class="match-id-label">ID: ${m.match_id}</div>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="text-secondary" style="font-size:.75rem;">✓ Added</span>
+                                <button class="btn-delete-match" onclick="deleteMatch('${m.match_id}', '${(m.match_name || 'Match').replace(/'/g, "\\'")}')">🗑 Remove</button>
+                            </div>
+                        `;
+                        list.appendChild(div);
+                    });
+                    showEl(list);
+                })
+                .catch(() => { hideEl(loading); showEl(empty); });
+        }
+
+        function deleteMatch(matchId, matchName) {
+            if (!confirm(`Remove "${matchName}" (ID: ${matchId})? Points will be recomputed.`)) return;
+            fetch('/fantasy/match/' + encodeURIComponent(matchId), { method: 'DELETE' })
+                .then(r => r.json())
+                .then(d => {
+                    if (d.error) { alert('Error: ' + d.error); return; }
+                    loadExistingMatches();
+                })
+                .catch(err => alert('Error: ' + err));
+        }
+
+        /* --- Multi-match modal --- */
+        let matchEntryCounter = 0;
+
+        function openAddMatchModal() {
+            const container = document.getElementById('matchEntriesContainer');
+            container.innerHTML = '';
+            matchEntryCounter = 0;
+            hideEl(document.getElementById('matchSubmitProgress'));
+            document.getElementById('matchSubmitProgress').innerHTML = '';
+            addMatchEntry();
+            new bootstrap.Modal(document.getElementById('addMatchModal')).show();
+        }
+
+        function addMatchEntry() {
+            matchEntryCounter++;
+            const id = matchEntryCounter;
+            const container = document.getElementById('matchEntriesContainer');
+            const row = document.createElement('div');
+            row.className = 'match-entry-row';
+            row.id = 'matchEntry' + id;
+            row.innerHTML = `
+                <div class="flex-grow-1">
+                    <label class="form-label">Cricbuzz Match ID</label>
+                    <input type="text" class="form-control match-id-field" placeholder="e.g. 139373">
+                </div>
+                <div class="flex-grow-1">
+                    <label class="form-label">Cricinfo Full Scorecard URL</label>
+                    <input type="url" class="form-control match-url-field" placeholder="https://...full-scorecard">
+                </div>
+                <button class="btn-remove-entry" title="Remove" onclick="document.getElementById('matchEntry${id}').remove()">✕</button>
+            `;
+            container.appendChild(row);
+        }
+
+        async function submitAllMatches() {
+            const rows = document.querySelectorAll('.match-entry-row');
+            const entries = [];
+            for (const row of rows) {
+                const mid = row.querySelector('.match-id-field').value.trim();
+                const murl = row.querySelector('.match-url-field').value.trim();
+                if (mid && murl) entries.push({ id: mid, url: murl });
+            }
+            if (!entries.length) { alert('Please add at least one match with both fields filled.'); return; }
+
+            const btn = document.getElementById('submitAllMatchesBtn');
+            const progress = document.getElementById('matchSubmitProgress');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner-border"></span> Processing...';
+            progress.innerHTML = '';
+            showEl(progress);
+
+            for (let i = 0; i < entries.length; i++) {
+                const entry = entries[i];
+                const logItem = document.createElement('div');
+                logItem.className = 'log-item log-loading';
+                logItem.textContent = `[${i + 1}/${entries.length}] Fetching match ${entry.id}...`;
+                progress.appendChild(logItem);
+                progress.scrollTop = progress.scrollHeight;
+
+                // If duplicate exists, delete old first (silently)
+                const dup = existingMatchesData.find(m => m.match_id === entry.id);
+                if (dup) {
+                    logItem.textContent = `[${i + 1}/${entries.length}] Match ${entry.id} exists, re-scraping...`;
+                    try {
+                        await fetch('/fantasy/match/' + encodeURIComponent(entry.id), { method: 'DELETE' });
+                    } catch (e) { /* continue anyway */ }
+                }
+
+                try {
+                    const url = '/match/' + encodeURIComponent(entry.id) + '?cricinfo_url=' + encodeURIComponent(entry.url);
+                    const resp = await fetch(url);
+                    if (!resp.ok) {
+                        const errText = await resp.text();
+                        throw new Error(errText);
+                    }
+                    const msg = await resp.text();
+                    logItem.className = 'log-item log-success';
+                    logItem.textContent = `[${i + 1}/${entries.length}] ✅ ${msg}`;
+                } catch (err) {
+                    logItem.className = 'log-item log-error';
+                    logItem.textContent = `[${i + 1}/${entries.length}] ❌ Match ${entry.id}: ${err.message}`;
+                }
+                progress.scrollTop = progress.scrollHeight;
+            }
+
+            btn.disabled = false;
+            btn.textContent = 'Fetch & Score All';
+            loadExistingMatches();
+        }
+    </script>
+</body>
+
+</html>

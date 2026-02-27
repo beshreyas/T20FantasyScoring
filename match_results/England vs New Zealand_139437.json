@@ -1,0 +1,295 @@
+{
+  "match_id": "139437",
+  "batting": [
+    {
+      "player": "Tim Seifert",
+      "dismissal": "st Jos Buttler b Adil Rashid",
+      "runs": 35,
+      "balls": 25,
+      "fours": 3,
+      "sixes": 2
+    },
+    {
+      "player": "Finn Allen",
+      "dismissal": "c Jacob Bethell b Will Jacks",
+      "runs": 29,
+      "balls": 19,
+      "fours": 0,
+      "sixes": 3
+    },
+    {
+      "player": "Rachin Ravindra",
+      "dismissal": "c Jacob Bethell b Rehan Ahmed",
+      "runs": 11,
+      "balls": 13,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Glenn Phillips",
+      "dismissal": "b Will Jacks",
+      "runs": 39,
+      "balls": 28,
+      "fours": 4,
+      "sixes": 1
+    },
+    {
+      "player": "Mark Chapman",
+      "dismissal": "st Jos Buttler b Adil Rashid",
+      "runs": 15,
+      "balls": 9,
+      "fours": 2,
+      "sixes": 0
+    },
+    {
+      "player": "Daryl Mitchell",
+      "dismissal": "c Will Jacks b Liam Dawson",
+      "runs": 3,
+      "balls": 8,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Mitchell Santner",
+      "dismissal": "not out",
+      "runs": 9,
+      "balls": 5,
+      "fours": 0,
+      "sixes": 1
+    },
+    {
+      "player": "Cole McConchie",
+      "dismissal": "b Rehan Ahmed",
+      "runs": 14,
+      "balls": 12,
+      "fours": 2,
+      "sixes": 0
+    },
+    {
+      "player": "Matt Henry",
+      "dismissal": "not out",
+      "runs": 1,
+      "balls": 1,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Philip Salt",
+      "dismissal": "c Tim Seifert b Matt Henry",
+      "runs": 2,
+      "balls": 4,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Jos Buttler",
+      "dismissal": "c Tim Seifert b Lockie Ferguson",
+      "runs": 0,
+      "balls": 2,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Harry Brook",
+      "dismissal": "c Daryl Mitchell b Glenn Phillips",
+      "runs": 26,
+      "balls": 24,
+      "fours": 3,
+      "sixes": 1
+    },
+    {
+      "player": "Jacob Bethell",
+      "dismissal": "c Glenn Phillips b Rachin Ravindra",
+      "runs": 21,
+      "balls": 16,
+      "fours": 4,
+      "sixes": 0
+    },
+    {
+      "player": "Tom Banton",
+      "dismissal": "c Mark Chapman b Rachin Ravindra",
+      "runs": 33,
+      "balls": 24,
+      "fours": 3,
+      "sixes": 1
+    },
+    {
+      "player": "Sam Curran",
+      "dismissal": "c Glenn Phillips b Rachin Ravindra",
+      "runs": 24,
+      "balls": 22,
+      "fours": 2,
+      "sixes": 1
+    },
+    {
+      "player": "Will Jacks",
+      "dismissal": "not out",
+      "runs": 32,
+      "balls": 18,
+      "fours": 4,
+      "sixes": 1
+    },
+    {
+      "player": "Rehan Ahmed",
+      "dismissal": "not out",
+      "runs": 19,
+      "balls": 7,
+      "fours": 1,
+      "sixes": 2
+    }
+  ],
+  "bowling": [
+    {
+      "player": "Jofra Archer",
+      "balls": 18,
+      "maidens": 1,
+      "runs": 24,
+      "wickets": 0,
+      "dots": 10
+    },
+    {
+      "player": "Liam Dawson",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 32,
+      "wickets": 1,
+      "dots": 7
+    },
+    {
+      "player": "Sam Curran",
+      "balls": 6,
+      "maidens": 0,
+      "runs": 10,
+      "wickets": 0,
+      "dots": 2
+    },
+    {
+      "player": "Adil Rashid",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 28,
+      "wickets": 2,
+      "dots": 12
+    },
+    {
+      "player": "Will Jacks",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 23,
+      "wickets": 2,
+      "dots": 9
+    },
+    {
+      "player": "Jacob Bethell",
+      "balls": 6,
+      "maidens": 0,
+      "runs": 13,
+      "wickets": 0,
+      "dots": 1
+    },
+    {
+      "player": "Rehan Ahmed",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 28,
+      "wickets": 2,
+      "dots": 3
+    },
+    {
+      "player": "Matt Henry",
+      "balls": 15,
+      "maidens": 0,
+      "runs": 19,
+      "wickets": 1,
+      "dots": 9
+    },
+    {
+      "player": "Lockie Ferguson",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 14,
+      "wickets": 1,
+      "dots": 7
+    },
+    {
+      "player": "Mitchell Santner",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 29,
+      "wickets": 0,
+      "dots": 11
+    },
+    {
+      "player": "Cole McConchie",
+      "balls": 6,
+      "maidens": 0,
+      "runs": 13,
+      "wickets": 0,
+      "dots": 1
+    },
+    {
+      "player": "Glenn Phillips",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 43,
+      "wickets": 1,
+      "dots": 7
+    },
+    {
+      "player": "Rachin Ravindra",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 19,
+      "wickets": 3,
+      "dots": 11
+    },
+    {
+      "player": "Ish Sodhi",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 21,
+      "wickets": 0,
+      "dots": 5
+    }
+  ],
+  "fielding": {
+    "Jos Buttler": {
+      "catches": 0,
+      "runout": 0,
+      "stumpings": 2
+    },
+    "Jacob Bethell": {
+      "catches": 2,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Will Jacks": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Tim Seifert": {
+      "catches": 2,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Daryl Mitchell": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Glenn Phillips": {
+      "catches": 2,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Mark Chapman": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    }
+  },
+  "scorecard_url": "https://www.cricbuzz.com/live-cricket-scorecard/139437/",
+  "man_of_the_match": "Will Jacks",
+  "cricinfo_url": "https://www.espncricinfo.com/series/icc-men-s-t20-world-cup-2025-26-1502138/england-vs-new-zealand-49th-match-super-eights-group-2-1512767/full-scorecard"
+}

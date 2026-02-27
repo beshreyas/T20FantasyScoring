@@ -1,0 +1,305 @@
+{
+  "match_id": "139404",
+  "batting": [
+    {
+      "player": "Tim Seifert",
+      "dismissal": "c Kamindu Mendis b Dushmantha Chameera",
+      "runs": 8,
+      "balls": 9,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Finn Allen",
+      "dismissal": "c and b Maheesh Theekshana",
+      "runs": 23,
+      "balls": 13,
+      "fours": 3,
+      "sixes": 1
+    },
+    {
+      "player": "Rachin Ravindra",
+      "dismissal": "c Dushan Hemantha b Maheesh Theekshana",
+      "runs": 32,
+      "balls": 22,
+      "fours": 3,
+      "sixes": 1
+    },
+    {
+      "player": "Glenn Phillips",
+      "dismissal": "b Dushmantha Chameera",
+      "runs": 18,
+      "balls": 18,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Daryl Mitchell",
+      "dismissal": "b Dunith Wellalage",
+      "runs": 3,
+      "balls": 7,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Mark Chapman",
+      "dismissal": "b Maheesh Theekshana",
+      "runs": 0,
+      "balls": 2,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Mitchell Santner",
+      "dismissal": "c Charith Asalanka b Dushmantha Chameera",
+      "runs": 47,
+      "balls": 26,
+      "fours": 2,
+      "sixes": 4
+    },
+    {
+      "player": "Cole McConchie",
+      "dismissal": "not out",
+      "runs": 31,
+      "balls": 23,
+      "fours": 3,
+      "sixes": 2
+    },
+    {
+      "player": "Pathum Nissanka",
+      "dismissal": "b Matt Henry",
+      "runs": 0,
+      "balls": 1,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Kusal Mendis",
+      "dismissal": "st Tim Seifert b Rachin Ravindra",
+      "runs": 11,
+      "balls": 22,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Charith Asalanka",
+      "dismissal": "c Daryl Mitchell b Matt Henry",
+      "runs": 5,
+      "balls": 9,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Pavan Rathnayake",
+      "dismissal": "st Tim Seifert b Rachin Ravindra",
+      "runs": 10,
+      "balls": 18,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Kamindu Mendis",
+      "dismissal": "c Glenn Phillips b Mitchell Santner",
+      "runs": 31,
+      "balls": 23,
+      "fours": 4,
+      "sixes": 0
+    },
+    {
+      "player": "Dasun Shanaka",
+      "dismissal": "c Finn Allen b Rachin Ravindra",
+      "runs": 3,
+      "balls": 5,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Dushan Hemantha",
+      "dismissal": "c Daryl Mitchell b Rachin Ravindra",
+      "runs": 3,
+      "balls": 6,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Dunith Wellalage",
+      "dismissal": "c Rachin Ravindra b Glenn Phillips",
+      "runs": 29,
+      "balls": 23,
+      "fours": 2,
+      "sixes": 1
+    },
+    {
+      "player": "Dushmantha Chameera",
+      "dismissal": "not out",
+      "runs": 7,
+      "balls": 12,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Maheesh Theekshana",
+      "dismissal": "not out",
+      "runs": 1,
+      "balls": 1,
+      "fours": 0,
+      "sixes": 0
+    }
+  ],
+  "bowling": [
+    {
+      "player": "Dilshan Madushanka",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 34,
+      "wickets": 0,
+      "dots": 5
+    },
+    {
+      "player": "Dunith Wellalage",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 27,
+      "wickets": 1,
+      "dots": 9
+    },
+    {
+      "player": "Maheesh Theekshana",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 30,
+      "wickets": 3,
+      "dots": 11
+    },
+    {
+      "player": "Dushmantha Chameera",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 38,
+      "wickets": 3,
+      "dots": 11
+    },
+    {
+      "player": "Dushan Hemantha",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 22,
+      "wickets": 0,
+      "dots": 3
+    },
+    {
+      "player": "Charith Asalanka",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 16,
+      "wickets": 0,
+      "dots": 6
+    },
+    {
+      "player": "Matt Henry",
+      "balls": 12,
+      "maidens": 1,
+      "runs": 3,
+      "wickets": 2,
+      "dots": 10
+    },
+    {
+      "player": "Cole McConchie",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 20,
+      "wickets": 0,
+      "dots": 8
+    },
+    {
+      "player": "Mitchell Santner",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 19,
+      "wickets": 1,
+      "dots": 11
+    },
+    {
+      "player": "Lockie Ferguson",
+      "balls": 6,
+      "maidens": 0,
+      "runs": 2,
+      "wickets": 0,
+      "dots": 4
+    },
+    {
+      "player": "Ish Sodhi",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 13,
+      "wickets": 0,
+      "dots": 2
+    },
+    {
+      "player": "Rachin Ravindra",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 27,
+      "wickets": 4,
+      "dots": 11
+    },
+    {
+      "player": "Glenn Phillips",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 21,
+      "wickets": 1,
+      "dots": 9
+    }
+  ],
+  "fielding": {
+    "Kamindu Mendis": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Maheesh Theekshana": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Dushan Hemantha": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Charith Asalanka": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Tim Seifert": {
+      "catches": 0,
+      "runout": 0,
+      "stumpings": 2
+    },
+    "Daryl Mitchell": {
+      "catches": 2,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Glenn Phillips": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Finn Allen": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Rachin Ravindra": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    }
+  },
+  "scorecard_url": "https://www.cricbuzz.com/live-cricket-scorecard/139404/",
+  "man_of_the_match": "Rachin Ravindra",
+  "cricinfo_url": "https://www.espncricinfo.com/series/icc-men-s-t20-world-cup-2025-26-1502138/sri-lanka-vs-new-zealand-46th-match-super-eights-group-2-1512764/full-scorecard"
+}
