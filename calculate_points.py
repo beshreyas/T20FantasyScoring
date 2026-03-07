@@ -1,15 +1,9 @@
-"""Aggregate fantasy points across all matches in match_results/.
+"""Aggregate fantasy points for a tournament.
 
-Reads PlayersWithTeam.csv for the player→team mapping, scores every match
-JSON, and writes three output files under player_points/:
-    all_player_points.json   – per-player, per-match breakdown + totals
-    leaderboard.json         – players sorted by total points
-    team_leaderboard.json    – teams sorted by aggregate points
+Reads player→team mapping from MongoDB (tournament doc), scores every match,
+and writes results to MongoDB.
 """
 
-import csv
-import json
-import os
 import re
 
 from scoring import (
@@ -19,28 +13,21 @@ from scoring import (
     MOM_BONUS,
 )
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MATCH_RESULTS_DIR = os.path.join(BASE_DIR, "match_results")
-PLAYER_POINTS_DIR = os.path.join(BASE_DIR, "player_points")
-PLAYERS_CSV       = os.path.join(BASE_DIR, "PlayersWithTeam.csv")
-
 
 # ---------------------------------------------------------------------------
-# Player → team mapping
+# Player → team mapping (from MongoDB)
 # ---------------------------------------------------------------------------
 
-def _load_player_team_map():
-    """Load PlayersWithTeam.csv into {normalised_name: team}."""
+def _load_player_team_map(tournament_id):
+    """Load player→team mapping from the tournament's roster in MongoDB."""
+    from db import get_players
+    players = get_players(tournament_id)
     mapping = {}
-    if not os.path.isfile(PLAYERS_CSV):
-        return mapping
-    with open(PLAYERS_CSV, newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            name = row.get("Player Name", "").strip()
-            team = row.get("Team", "").strip()
-            if name and team:
-                mapping[_normalise(name)] = team
+    for p in players:
+        name = p.get("player_name", "").strip()
+        team = p.get("team", "").strip()
+        if name and team:
+            mapping[_normalise(name)] = team
     return mapping
 
 
@@ -56,14 +43,13 @@ def _resolve_team(player_name, team_map):
     key = _normalise(player_name)
     if key in team_map:
         return team_map[key]
-    # partial match (e.g. "Phil Salt" vs "Philip Salt")
     for csv_key, team in team_map.items():
         if csv_key in key or key in csv_key:
             return team
     return "Unknown"
 
 
-# Canonical team-name mapping (CSV has mixed case: GKKani, GkKani, Gkkani)
+# Canonical team-name mapping
 _TEAM_CANONICAL = {
     "gkkani": "GKKani",
     "ppt": "PPT",
@@ -86,14 +72,7 @@ def _normalise_team(team):
 # ---------------------------------------------------------------------------
 
 def _process_match(match_data, match_id, match_name, players, team_map):
-    """Score a single match and accumulate into *players* dict.
-
-    players: {normalised_name: {
-        "player_name": str, "team": str,
-        "matches": [{match_id, batting, bowling, fielding, mom, total}],
-        "total_points": int
-    }}
-    """
+    """Score a single match and accumulate into *players* dict."""
 
     def _ensure_player(name):
         key = _normalise(name)
@@ -122,7 +101,6 @@ def _process_match(match_data, match_id, match_name, players, team_map):
         players[key]["matches"].append(rec)
         return rec
 
-    # --- batting ---
     for rec in match_data.get("batting", []):
         name = rec.get("player", "")
         if not name:
@@ -134,7 +112,6 @@ def _process_match(match_data, match_id, match_name, players, team_map):
         mr["total"] += pts
         players[key]["total_points"] += pts
 
-    # --- bowling ---
     for rec in match_data.get("bowling", []):
         name = rec.get("player", "")
         if not name:
@@ -146,7 +123,6 @@ def _process_match(match_data, match_id, match_name, players, team_map):
         mr["total"] += pts
         players[key]["total_points"] += pts
 
-    # --- fielding ---
     fielding = match_data.get("fielding", {})
     for name, entry in fielding.items():
         if not name:
@@ -158,7 +134,6 @@ def _process_match(match_data, match_id, match_name, players, team_map):
         mr["total"] += pts
         players[key]["total_points"] += pts
 
-    # --- Man of the Match ---
     mom_name = match_data.get("man_of_the_match")
     if mom_name:
         key = _ensure_player(mom_name)
@@ -172,29 +147,25 @@ def _process_match(match_data, match_id, match_name, players, team_map):
 # Public API
 # ---------------------------------------------------------------------------
 
-def recalculate_all():
-    """Re-score every match in match_results/ and write output files.
+def recalculate_all(tournament_id):
+    """Re-score every match for a tournament and write to MongoDB.
 
     Returns (leaderboard, team_leaderboard) lists.
     """
-    team_map = _load_player_team_map()
-    players = {}  # normalised_name → data
+    from db import (
+        get_all_matches, save_all_player_points,
+        save_leaderboard, save_team_leaderboard,
+    )
 
-    if not os.path.isdir(MATCH_RESULTS_DIR):
-        os.makedirs(MATCH_RESULTS_DIR, exist_ok=True)
+    team_map = _load_player_team_map(tournament_id)
+    players = {}
 
-    for fname in sorted(os.listdir(MATCH_RESULTS_DIR)):
-        if not fname.endswith(".json"):
-            continue
-        fpath = os.path.join(MATCH_RESULTS_DIR, fname)
-        with open(fpath, encoding="utf-8") as f:
-            match_data = json.load(f)
-        match_id = match_data.get("match_id", fname.replace(".json", ""))
-        # Derive human-readable match name from filename, e.g. "England vs Sri Lanka"
-        match_name = fname.replace(".json", "").rsplit("_", 1)[0] if "_" in fname else fname.replace(".json", "")
-        _process_match(match_data, match_id, match_name, players, team_map)
+    all_matches = get_all_matches(tournament_id)
+    for doc in all_matches:
+        match_id = doc.get("match_id", "")
+        match_name = doc.get("match_name", "Match {}".format(match_id))
+        _process_match(doc, str(match_id), match_name, players, team_map)
 
-    # Build sorted leaderboard
     all_players = sorted(players.values(), key=lambda p: p["total_points"], reverse=True)
 
     leaderboard = [
@@ -207,10 +178,10 @@ def recalculate_all():
         for p in all_players
     ]
 
-    # Team leaderboard — pre-seed all teams from CSV so 0-point teams appear
-    all_csv_teams = set(team_map.values())
+    # Team leaderboard
+    all_roster_teams = set(team_map.values())
     teams = {}
-    for t in all_csv_teams:
+    for t in all_roster_teams:
         norm_t = _normalise_team(t)
         if norm_t not in teams:
             teams[norm_t] = {"team": norm_t, "total_points": 0, "player_count": 0}
@@ -224,19 +195,12 @@ def recalculate_all():
         teams[t]["player_count"] += 1
     team_leaderboard = sorted(teams.values(), key=lambda t: t["total_points"], reverse=True)
 
-    # Write output files
-    os.makedirs(PLAYER_POINTS_DIR, exist_ok=True)
+    # Save to MongoDB
+    save_all_player_points(tournament_id, all_players)
+    save_leaderboard(tournament_id, leaderboard)
+    save_team_leaderboard(tournament_id, team_leaderboard)
 
-    with open(os.path.join(PLAYER_POINTS_DIR, "all_player_points.json"), "w", encoding="utf-8") as f:
-        json.dump(all_players, f, indent=2, ensure_ascii=False)
-
-    with open(os.path.join(PLAYER_POINTS_DIR, "leaderboard.json"), "w", encoding="utf-8") as f:
-        json.dump(leaderboard, f, indent=2, ensure_ascii=False)
-
-    with open(os.path.join(PLAYER_POINTS_DIR, "team_leaderboard.json"), "w", encoding="utf-8") as f:
-        json.dump(team_leaderboard, f, indent=2, ensure_ascii=False)
-
-    print(f"Scored {len(all_players)} players across "
+    print(f"[{tournament_id}] Scored {len(all_players)} players across "
           f"{sum(len(p['matches']) for p in all_players)} match appearances.")
     return leaderboard, team_leaderboard
 
@@ -246,7 +210,12 @@ def recalculate_all():
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    leaderboard, team_lb = recalculate_all()
+    import argparse
+    parser = argparse.ArgumentParser(description="Recalculate fantasy points for a tournament.")
+    parser.add_argument("tournament_id", help="Tournament slug (e.g. wt20_2026)")
+    args = parser.parse_args()
+
+    leaderboard, team_lb = recalculate_all(args.tournament_id)
     print("\n🏆  Player Leaderboard (top 10):")
     for i, p in enumerate(leaderboard[:10], 1):
         print(f"  {i:>2}. {p['player_name']:<25} {p['team']:<10} {p['total_points']:>6} pts  ({p['matches_played']} matches)")

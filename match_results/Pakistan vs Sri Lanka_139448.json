@@ -1,0 +1,292 @@
+{
+  "match_id": "139448",
+  "batting": [
+    {
+      "player": "Sahibzada Farhan",
+      "dismissal": "c Janith Liyanage b Dilshan Madushanka",
+      "runs": 100,
+      "balls": 60,
+      "fours": 9,
+      "sixes": 5
+    },
+    {
+      "player": "Fakhar Zaman",
+      "dismissal": "b Dushmantha Chameera",
+      "runs": 84,
+      "balls": 42,
+      "fours": 9,
+      "sixes": 4
+    },
+    {
+      "player": "Khawaja Nafay",
+      "dismissal": "c Charith Asalanka b Dilshan Madushanka",
+      "runs": 2,
+      "balls": 3,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Shadab Khan",
+      "dismissal": "run out (Dilshan Madushanka/Kamil Mishara)",
+      "runs": 7,
+      "balls": 5,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Mohammad Nawaz",
+      "dismissal": "c Maheesh Theekshana b Dasun Shanaka",
+      "runs": 0,
+      "balls": 1,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Salman Agha",
+      "dismissal": "c Maheesh Theekshana b Dasun Shanaka",
+      "runs": 0,
+      "balls": 2,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Usman Khan",
+      "dismissal": "not out",
+      "runs": 8,
+      "balls": 4,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Shaheen Afridi",
+      "dismissal": "lbw b Dilshan Madushanka",
+      "runs": 4,
+      "balls": 2,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Naseem Shah",
+      "dismissal": "run out (Kamindu Mendis/Dilshan Madushanka)",
+      "runs": 1,
+      "balls": 1,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Abrar Ahmed",
+      "dismissal": "not out",
+      "runs": 0,
+      "balls": 0,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Pathum Nissanka",
+      "dismissal": "c Mohammad Nawaz b Naseem Shah",
+      "runs": 3,
+      "balls": 7,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Kamil Mishara",
+      "dismissal": "b Abrar Ahmed",
+      "runs": 26,
+      "balls": 15,
+      "fours": 4,
+      "sixes": 1
+    },
+    {
+      "player": "Charith Asalanka",
+      "dismissal": "b Abrar Ahmed",
+      "runs": 25,
+      "balls": 18,
+      "fours": 1,
+      "sixes": 2
+    },
+    {
+      "player": "Pavan Rathnayake",
+      "dismissal": "c (sub)Saim Ayub b Shaheen Afridi",
+      "runs": 58,
+      "balls": 37,
+      "fours": 4,
+      "sixes": 3
+    },
+    {
+      "player": "Kamindu Mendis",
+      "dismissal": "b Abrar Ahmed",
+      "runs": 3,
+      "balls": 6,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Janith Liyanage",
+      "dismissal": "b Mohammad Nawaz",
+      "runs": 5,
+      "balls": 3,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Dasun Shanaka",
+      "dismissal": "not out",
+      "runs": 76,
+      "balls": 31,
+      "fours": 2,
+      "sixes": 8
+    },
+    {
+      "player": "Dunith Wellalage",
+      "dismissal": "not out",
+      "runs": 2,
+      "balls": 3,
+      "fours": 0,
+      "sixes": 0
+    }
+  ],
+  "bowling": [
+    {
+      "player": "Dilshan Madushanka",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 33,
+      "wickets": 3,
+      "dots": 11
+    },
+    {
+      "player": "Dushmantha Chameera",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 48,
+      "wickets": 1,
+      "dots": 4
+    },
+    {
+      "player": "Maheesh Theekshana",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 35,
+      "wickets": 0,
+      "dots": 8
+    },
+    {
+      "player": "Dasun Shanaka",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 42,
+      "wickets": 2,
+      "dots": 8
+    },
+    {
+      "player": "Dunith Wellalage",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 37,
+      "wickets": 0,
+      "dots": 4
+    },
+    {
+      "player": "Janith Liyanage",
+      "balls": 6,
+      "maidens": 0,
+      "runs": 14,
+      "wickets": 0,
+      "dots": 0
+    },
+    {
+      "player": "Shaheen Afridi",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 48,
+      "wickets": 1,
+      "dots": 0
+    },
+    {
+      "player": "Naseem Shah",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 36,
+      "wickets": 1,
+      "dots": 8
+    },
+    {
+      "player": "Abrar Ahmed",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 23,
+      "wickets": 3,
+      "dots": 11
+    },
+    {
+      "player": "Usman Tariq",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 43,
+      "wickets": 0,
+      "dots": 3
+    },
+    {
+      "player": "Mohammad Nawaz",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 21,
+      "wickets": 1,
+      "dots": 2
+    },
+    {
+      "player": "Shadab Khan",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 33,
+      "wickets": 0,
+      "dots": 2
+    }
+  ],
+  "fielding": {
+    "Janith Liyanage": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Charith Asalanka": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Dilshan Madushanka": {
+      "catches": 0,
+      "runout": 2,
+      "stumpings": 0
+    },
+    "Kamil Mishara": {
+      "catches": 0,
+      "runout": 1,
+      "stumpings": 0
+    },
+    "Maheesh Theekshana": {
+      "catches": 2,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Kamindu Mendis": {
+      "catches": 0,
+      "runout": 1,
+      "stumpings": 0
+    },
+    "Mohammad Nawaz": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "(sub)Saim Ayub": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    }
+  },
+  "scorecard_url": "https://www.cricbuzz.com/live-cricket-scorecard/139448/",
+  "man_of_the_match": "Sahibzada Farhan",
+  "cricinfo_url": "https://www.espncricinfo.com/series/icc-men-s-t20-world-cup-2025-26-1502138/sri-lanka-vs-pakistan-50th-match-super-eights-group-2-1512768/full-scorecard"
+}

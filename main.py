@@ -1,302 +1,167 @@
-from flask import Flask, jsonify, render_template, request
-import json
-import os
-import re
-import requests
-from bs4 import BeautifulSoup
-from googlesearch import search
+import csv
+import io
 
-from batting import parse_batting
-from bowling import parse_bowling
-from cricinfo_dots import get_dots_by_bowler_cricinfo
-from cricinfo_mom import get_man_of_the_match
-from fielding import build_fielding_from_batting
-from calculate_points import recalculate_all, PLAYER_POINTS_DIR
+from flask import Flask, jsonify, render_template, request
+
+from calculate_points import recalculate_all
 
 app = Flask(__name__)
 
 
-@app.route('/players/<player_name>', methods=['GET'])
-def get_player(player_name):
-    query = f"{player_name} cricbuzz"
-    profile_link = None
+# ---------------------------------------------------------------------------
+# Tournament endpoints
+# ---------------------------------------------------------------------------
+
+@app.route('/tournaments', methods=['GET'])
+def list_tournaments_endpoint():
+    """List all tournaments."""
+    from db import list_tournaments
+    return jsonify(list_tournaments())
+
+
+@app.route('/tournaments', methods=['POST'])
+def create_tournament_endpoint():
+    """Create a new tournament. Body: {tournament_id, name, players?}."""
+    from db import create_tournament
+    data = request.get_json(force=True)
+    tid = (data.get("tournament_id") or "").strip()
+    name = (data.get("name") or "").strip()
+    if not tid or not name:
+        return jsonify({"error": "tournament_id and name are required"}), 400
     try:
-        results = search(query, num_results=5)
-        for link in results:
-            if "cricbuzz.com/profiles/" in link:
-                profile_link = link
-                print(f"Found profile: {profile_link}")
-                break
-                
-        if not profile_link:
-            return {"error": "No player profile found"}
-    except Exception as e:
-        return {"error": f"Search failed: {str(e)}"}
-    
-    # Get player profile page
-    c = requests.get(profile_link).text
-    cric = BeautifulSoup(c, "lxml")
-    profile = cric.find("div", id="playerProfile")
-    pc = profile.find("div", class_="cb-col cb-col-100 cb-bg-white")
-    
-    # Name, country and image
-    name = pc.find("h1", class_="cb-font-40").text
-    country = pc.find("h3", class_="cb-font-18 text-gray").text
-    image_url = None
-    images = pc.findAll('img')
-    for image in images:
-        image_url = image['src']
-        break  # Just get the first image
-
-    # Personal information and rankings
-    personal = cric.find_all("div", class_="cb-col cb-col-60 cb-lst-itm-sm")
-    role = personal[2].text.strip()
-    
-    icc = cric.find_all("div", class_="cb-col cb-col-25 cb-plyr-rank text-right")
-    # Batting rankings
-    tb = icc[0].text.strip()   # Test batting
-    ob = icc[1].text.strip()   # ODI batting
-    twb = icc[2].text.strip()  # T20 batting
-    
-    # Bowling rankings
-    tbw = icc[3].text.strip()  # Test bowling
-    obw = icc[4].text.strip()  # ODI bowling
-    twbw = icc[5].text.strip() # T20 bowling
-
-    # Summary of the stats
-    summary = cric.find_all("div", class_="cb-plyr-tbl")
-    batting = summary[0]
-    bowling = summary[1]
-
-    # Batting statistics
-    bat_rows = batting.find("tbody").find_all("tr")
-    batting_stats = {}
-    for row in bat_rows:
-        cols = row.find_all("td")
-        format_name = cols[0].text.strip().lower()  # e.g., "Test", "ODI", "T20"
-        batting_stats[format_name] = {
-            "matches": cols[1].text.strip(),
-            "runs": cols[3].text.strip(),
-            "highest_score": cols[5].text.strip(),
-            "average": cols[6].text.strip(),
-            "strike_rate": cols[7].text.strip(),
-            "hundreds": cols[12].text.strip(),
-            "fifties": cols[11].text.strip(),
-        }
-
-    # Bowling statistics
-    bowl_rows = bowling.find("tbody").find_all("tr")
-    bowling_stats = {}
-    for row in bowl_rows:
-        cols = row.find_all("td")
-        format_name = cols[0].text.strip().lower()  # e.g., "Test", "ODI", "T20"
-        bowling_stats[format_name] = {
-            "balls": cols[3].text.strip(),
-            "runs": cols[4].text.strip(),
-            "wickets": cols[5].text.strip(),
-            "best_bowling_innings": cols[9].text.strip(),
-            "economy": cols[7].text.strip(),
-            "five_wickets": cols[11].text.strip(),
-        }
-
-    # Create player stats dictionary
-    player_data = {
-        "name": name,
-        "country": country,
-        "image": image_url,
-        "role": role,
-        "rankings": {
-            "batting": {
-                "test": tb,
-                "odi": ob,
-                "t20": twb
-            },
-            "bowling": {
-                "test": tbw,
-                "odi": obw,
-                "t20": twbw
-            }
-        },
-        "batting_stats": batting_stats,
-        "bowling_stats": bowling_stats
-    }
-
-    return jsonify(player_data)
+        create_tournament(tid, name, data.get("players"))
+        return jsonify({"status": "ok", "tournament_id": tid})
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 409
 
 
-@app.route('/schedule')
-def schedule():
-    link = f"https://www.cricbuzz.com/cricket-schedule/upcoming-series/international"
-    source = requests.get(link).text
-    page = BeautifulSoup(source, "lxml")
-
-    # Find all match containers
-    match_containers = page.find_all("div", class_="cb-col-100 cb-col")
-
-    matches = []
-
-    # Iterate through each match container
-    for container in match_containers:
-        # Extract match details
-        date = container.find("div", class_="cb-lv-grn-strip text-bold")
-        match_info = container.find("div", class_="cb-col-100 cb-col")
-        
-        if date and match_info:
-            match_date = date.text.strip()
-            match_details = match_info.text.strip()
-            matches.append(f"{match_date} - {match_details}")
-    
-    return jsonify(matches)
+@app.route('/tournaments/<slug>', methods=['DELETE'])
+def delete_tournament_endpoint(slug):
+    """Delete a tournament and all its data."""
+    from db import delete_tournament
+    if delete_tournament(slug):
+        return jsonify({"status": "ok", "tournament_id": slug})
+    return jsonify({"error": "Tournament not found"}), 404
 
 
 # ---------------------------------------------------------------------------
-# Completed match (by ID) - same ID works for any game in the tournament
-# URL pattern: https://www.cricbuzz.com/live-cricket-scorecard/<match_id>/
-# See CRICBUZZ_MATCH_URLS.md
+# Player roster endpoints
 # ---------------------------------------------------------------------------
 
-MATCH_RESULTS_DIR = "match_results"
+@app.route('/t/<slug>/players', methods=['GET'])
+def get_players_endpoint(slug):
+    """Return the player roster for a tournament."""
+    from db import get_players
+    return jsonify(get_players(slug))
 
 
-def _match_title_vs_portion(soup):
-    """Extract 'Team A vs Team B' from page title (e.g. 'England vs Sri Lanka')."""
-    title_el = soup.find("title") or soup.find("h1")
-    if not title_el:
-        return None
-    raw = title_el.get_text(strip=True)
-    if " - Scorecard" in raw:
-        raw = raw.replace(" - Scorecard", "").strip()
-    if " | " in raw:
-        raw = raw.split(" | ", 1)[-1].strip()
-    # Take first segment before comma: "England vs Sri Lanka, 42nd Match..." -> "England vs Sri Lanka"
-    if "," in raw:
-        raw = raw.split(",")[0].strip()
-    if " vs " in raw:
-        return raw
-    return None
+@app.route('/t/<slug>/players', methods=['POST'])
+def set_players_endpoint(slug):
+    """Replace entire roster. Accepts JSON array or CSV file upload."""
+    from db import set_players, get_tournament
+    if not get_tournament(slug):
+        return jsonify({"error": "Tournament not found"}), 404
+
+    # CSV file upload
+    if 'file' in request.files:
+        file = request.files['file']
+        stream = io.StringIO(file.stream.read().decode("utf-8"))
+        reader = csv.DictReader(stream)
+        players = []
+        for row in reader:
+            name = (row.get("Player Name") or row.get("player_name") or "").strip()
+            team = (row.get("Team") or row.get("team") or "").strip()
+            if name and team:
+                players.append({"player_name": name, "team": team})
+        set_players(slug, players)
+        return jsonify({"status": "ok", "players_count": len(players)})
+
+    # JSON body
+    data = request.get_json(force=True)
+    if not isinstance(data, list):
+        return jsonify({"error": "Expected JSON array of {player_name, team}"}), 400
+    set_players(slug, data)
+    return jsonify({"status": "ok", "players_count": len(data)})
 
 
-def _save_match_result(match_id, vs_portion, data):
-    """Save match JSON to match_results/<vs_portion>_<match_id>.json. Returns path."""
-    if not vs_portion:
-        vs_portion = "match"
-    safe = re.sub(r'[<>:"/\\|?*]', "", vs_portion).strip() or "match"
-    os.makedirs(MATCH_RESULTS_DIR, exist_ok=True)
-    filename = "{}_{}.json".format(safe, match_id)
-    path = os.path.join(MATCH_RESULTS_DIR, filename)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-    return path
+@app.route('/t/<slug>/players', methods=['PUT'])
+def add_player_endpoint(slug):
+    """Add or update a single player. Body: {player_name, team}."""
+    from db import add_player, get_tournament
+    if not get_tournament(slug):
+        return jsonify({"error": "Tournament not found"}), 404
+    data = request.get_json(force=True)
+    name = (data.get("player_name") or "").strip()
+    team = (data.get("team") or "").strip()
+    if not name or not team:
+        return jsonify({"error": "player_name and team are required"}), 400
+    add_player(slug, name, team)
+    return jsonify({"status": "ok", "player_name": name, "team": team})
 
 
-@app.route('/match/<match_id>', methods=['GET'])
-def get_match(match_id):
-    """Fetch completed match data by Cricbuzz match ID (scorecard page).
-    Pass cricinfo_url = full ESPN Cricinfo scorecard URL for dots (0s column).
-    """
+@app.route('/t/<slug>/players/<player_name>', methods=['DELETE'])
+def remove_player_endpoint(slug, player_name):
+    """Remove a player from the roster."""
+    from db import remove_player
+    if remove_player(slug, player_name):
+        return jsonify({"status": "ok"})
+    return jsonify({"error": "Player not found"}), 404
+
+
+# ---------------------------------------------------------------------------
+# Match endpoint (scrape + read)
+# ---------------------------------------------------------------------------
+
+@app.route('/t/<slug>/match/<match_id>', methods=['GET'])
+def get_match_endpoint(slug, match_id):
+    """Return match data. If not found and cricinfo_url is provided, scrape it."""
     if not match_id.isdigit():
         return jsonify({"error": "match_id must be numeric"}), 400
+    from db import get_match, save_match
 
-    url = "https://www.cricbuzz.com/live-cricket-scorecard/{}/".format(match_id)
+    doc = get_match(slug, match_id)
+    if doc:
+        return jsonify(doc)
+
+    # Try to scrape
+    cricinfo_url = request.args.get("cricinfo_url", "").strip()
     try:
-        resp = requests.get(url, timeout=15)
-        resp.raise_for_status()
-    except requests.RequestException as e:
-        return jsonify({"error": "Failed to fetch match: {}".format(str(e))}), 502
-
-    soup = BeautifulSoup(resp.text, "lxml")
-
-    batting_records = parse_batting(soup)
-    bowling_records = parse_bowling(soup)
-
-    cricinfo_url = (request.args.get("cricinfo_url") or "").strip()
-    dots_by_bowler = {}
-    man_of_the_match = None
-    if cricinfo_url and "/full-scorecard" in cricinfo_url:
-        dots_by_bowler = get_dots_by_bowler_cricinfo(cricinfo_url)
-        man_of_the_match = get_man_of_the_match(cricinfo_url)
-
-    for record in bowling_records:
-        record["dots"] = dots_by_bowler.get(record["player"], 0)
-
-    batting_players = [r["player"] for r in batting_records if r.get("player")]
-    bowling_players = [r["player"] for r in bowling_records if r.get("player")]
-    fielding = build_fielding_from_batting(
-        batting_records, batting_players, bowling_players
-    )
-
-    out = {
-        "match_id": match_id,
-        "batting": batting_records,
-        "bowling": bowling_records,
-        "fielding": fielding,
-        "scorecard_url": url,
-        "man_of_the_match": man_of_the_match,
-        "cricinfo_url": cricinfo_url or None,
-    }
-
-    vs_portion = _match_title_vs_portion(soup)
-    path = _save_match_result(match_id, vs_portion, out)
-
-    # Auto-recalculate fantasy points after saving match result
-    try:
-        recalculate_all()
+        from scrape_match import scrape_match
+        match_data, vs_portion = scrape_match(match_id, cricinfo_url or None)
+        save_match(slug, match_data)
+        # Auto-recalculate
+        try:
+            recalculate_all(slug)
+        except Exception as e:
+            print("Warning: recalculate failed: {}".format(e))
+        return jsonify(match_data)
     except Exception as e:
-        print("Warning: Fantasy recalculation failed: {}".format(e))
+        return jsonify({"error": "Scrape failed: {}".format(str(e))}), 500
 
-    message = "{} saved successfully to {}".format(vs_portion or "Match", path)
-    return message, 200, {"Content-Type": "text/plain; charset=utf-8"}
-
-
-@app.route('/live')
-def live_matches():
-    link = f"https://www.cricbuzz.com/cricket-match/live-scores"
-    source = requests.get(link).text
-    page = BeautifulSoup(source, "lxml")
-
-    page = page.find("div",class_="cb-col cb-col-100 cb-bg-white")
-    matches = page.find_all("div",class_="cb-scr-wll-chvrn cb-lv-scrs-col")
-
-    live_matches = []
-
-    for i in range(len(matches)):
-        live_matches.append(matches[i].text.strip())
-    
-    
-    return jsonify(live_matches)
 
 # ---------------------------------------------------------------------------
-# Fantasy Scoring Endpoints
+# Fantasy Scoring Endpoints (tournament-scoped)
 # ---------------------------------------------------------------------------
 
-@app.route('/fantasy/leaderboard')
-def fantasy_leaderboard():
-    """Return player leaderboard sorted by total fantasy points."""
-    fpath = os.path.join(PLAYER_POINTS_DIR, "leaderboard.json")
-    if not os.path.isfile(fpath):
-        return jsonify([]), 200
-    with open(fpath, encoding="utf-8") as f:
-        return jsonify(json.load(f))
+@app.route('/t/<slug>/fantasy/leaderboard')
+def fantasy_leaderboard(slug):
+    """Player leaderboard for a tournament."""
+    from db import get_leaderboard
+    return jsonify(get_leaderboard(slug))
 
 
-@app.route('/fantasy/teams')
-def fantasy_teams():
-    """Return team leaderboard sorted by aggregate fantasy points."""
-    fpath = os.path.join(PLAYER_POINTS_DIR, "team_leaderboard.json")
-    if not os.path.isfile(fpath):
-        return jsonify([]), 200
-    with open(fpath, encoding="utf-8") as f:
-        return jsonify(json.load(f))
+@app.route('/t/<slug>/fantasy/teams')
+def fantasy_teams(slug):
+    """Team leaderboard for a tournament."""
+    from db import get_team_leaderboard
+    return jsonify(get_team_leaderboard(slug))
 
 
-@app.route('/fantasy/player/<player_name>')
-def fantasy_player(player_name):
-    """Return per-match point breakdown for a specific player."""
-    fpath = os.path.join(PLAYER_POINTS_DIR, "all_player_points.json")
-    if not os.path.isfile(fpath):
-        return jsonify({"error": "No points data yet"}), 404
-    with open(fpath, encoding="utf-8") as f:
-        all_players = json.load(f)
+@app.route('/t/<slug>/fantasy/player/<player_name>')
+def fantasy_player(slug, player_name):
+    """Per-match point breakdown for a player in a tournament."""
+    from db import get_all_player_points
+    all_players = get_all_player_points(slug)
     search_lower = player_name.lower()
     for p in all_players:
         if search_lower in p["player_name"].lower():
@@ -304,11 +169,11 @@ def fantasy_player(player_name):
     return jsonify({"error": "Player not found"}), 404
 
 
-@app.route('/fantasy/recalculate', methods=['GET', 'POST'])
-def fantasy_recalculate():
-    """Manually trigger a full recalculation of fantasy points."""
+@app.route('/t/<slug>/fantasy/recalculate', methods=['GET', 'POST'])
+def fantasy_recalculate(slug):
+    """Recalculate fantasy points for a tournament."""
     try:
-        leaderboard, team_lb = recalculate_all()
+        leaderboard, team_lb = recalculate_all(slug)
         return jsonify({
             "status": "ok",
             "players_scored": len(leaderboard),
@@ -318,76 +183,45 @@ def fantasy_recalculate():
         return jsonify({"error": str(e)}), 500
 
 
-@app.route('/fantasy/team/<team_name>')
-def fantasy_team_players(team_name):
-    """Return all players for a given team with their full point details."""
-    fpath = os.path.join(PLAYER_POINTS_DIR, "all_player_points.json")
-    if not os.path.isfile(fpath):
-        return jsonify([]), 200
-    with open(fpath, encoding="utf-8") as f:
-        all_players = json.load(f)
+@app.route('/t/<slug>/fantasy/team/<team_name>')
+def fantasy_team_players(slug, team_name):
+    """All players for a team in a tournament."""
+    from db import get_all_player_points
+    all_players = get_all_player_points(slug)
     search_lower = team_name.lower()
     team_players = [p for p in all_players if p.get("team", "").lower() == search_lower]
     team_players.sort(key=lambda p: p["total_points"], reverse=True)
     return jsonify(team_players)
 
 
-@app.route('/fantasy/matches')
-def fantasy_matches():
-    """Return list of already-scraped matches with IDs and cricinfo URLs."""
-    if not os.path.isdir(MATCH_RESULTS_DIR):
-        return jsonify([]), 200
-    matches = []
-    for fname in sorted(os.listdir(MATCH_RESULTS_DIR)):
-        if not fname.endswith(".json"):
-            continue
-        fpath = os.path.join(MATCH_RESULTS_DIR, fname)
-        try:
-            with open(fpath, encoding="utf-8") as f:
-                data = json.load(f)
-        except Exception:
-            continue
-        match_name = fname.replace(".json", "").rsplit("_", 1)[0] if "_" in fname else fname.replace(".json", "")
-        matches.append({
-            "match_id": data.get("match_id", ""),
-            "match_name": match_name,
-            "cricinfo_url": data.get("cricinfo_url", ""),
-            "filename": fname,
-        })
-    return jsonify(matches)
+@app.route('/t/<slug>/fantasy/matches')
+def fantasy_matches(slug):
+    """List scraped matches for a tournament."""
+    from db import get_match_summaries
+    return jsonify(get_match_summaries(slug))
 
 
-@app.route('/fantasy/match/<match_id>', methods=['DELETE'])
-def fantasy_delete_match(match_id):
-    """Delete a match result file and recalculate fantasy points."""
-    if not os.path.isdir(MATCH_RESULTS_DIR):
-        return jsonify({"error": "No matches directory"}), 404
-    deleted = False
-    for fname in os.listdir(MATCH_RESULTS_DIR):
-        if not fname.endswith(".json"):
-            continue
-        fpath = os.path.join(MATCH_RESULTS_DIR, fname)
-        try:
-            with open(fpath, encoding="utf-8") as f:
-                data = json.load(f)
-            if str(data.get("match_id", "")) == str(match_id):
-                os.remove(fpath)
-                deleted = True
-                break
-        except Exception:
-            continue
-    if not deleted:
+@app.route('/t/<slug>/fantasy/match/<match_id>', methods=['DELETE'])
+def fantasy_delete_match(slug, match_id):
+    """Delete a match and recalculate points."""
+    from db import delete_match
+    if not delete_match(slug, match_id):
         return jsonify({"error": "Match not found"}), 404
     try:
-        recalculate_all()
+        recalculate_all(slug)
     except Exception as e:
         print("Warning: Fantasy recalculation failed: {}".format(e))
     return jsonify({"status": "ok", "match_id": match_id})
 
 
+# ---------------------------------------------------------------------------
+# Frontend
+# ---------------------------------------------------------------------------
+
 @app.route('/')
 def website():
     return render_template('index.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)

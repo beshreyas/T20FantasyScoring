@@ -1,27 +1,27 @@
 [
   {
     "team": "GKKani",
-    "total_points": 2113.0,
+    "total_points": 3102.0,
     "player_count": 14
-  },
-  {
-    "team": "RSK",
-    "total_points": 2105.0,
-    "player_count": 15
   },
   {
     "team": "PPT",
-    "total_points": 2068.0,
-    "player_count": 14
+    "total_points": 2897.0,
+    "player_count": 16
   },
   {
-    "team": "CNI",
-    "total_points": 1603.0,
-    "player_count": 13
+    "team": "RSK",
+    "total_points": 2659.0,
+    "player_count": 15
   },
   {
     "team": "RamSurya",
-    "total_points": 1496.0,
+    "total_points": 2397.0,
+    "player_count": 15
+  },
+  {
+    "team": "CNI",
+    "total_points": 2052.0,
     "player_count": 14
   }
 ]

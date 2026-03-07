@@ -45,7 +45,7 @@ def calculate_bowling_points(record):
 
     Formula (from fipl):
         wickets * 25
-        + maidens * 10
+        + maidens * 15
         + (overs * 12 - runs_conceded)        # economy bonus
         + dots * 1                             # dot-ball bonus
         + milestone bonuses (3W +25, 5W +50, 7W +100  – cumulative)
@@ -62,7 +62,7 @@ def calculate_bowling_points(record):
     overs = balls / 6.0
 
     wicket_pts  = wickets * 25
-    maiden_pts  = maidens * 10
+    maiden_pts  = maidens * 15
     economy_pts = (overs * 12) - runs
     dot_pts     = dots * 1
 

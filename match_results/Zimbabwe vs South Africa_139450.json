@@ -1,0 +1,274 @@
+{
+  "match_id": "139450",
+  "batting": [
+    {
+      "player": "Tadiwanashe Marumani",
+      "dismissal": "b Kwena Maphaka",
+      "runs": 7,
+      "balls": 7,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Brian Bennett",
+      "dismissal": "c Aiden Markram b Anrich Nortje",
+      "runs": 15,
+      "balls": 13,
+      "fours": 1,
+      "sixes": 1
+    },
+    {
+      "player": "Dion Myers",
+      "dismissal": "c Dewald Brevis b George Linde",
+      "runs": 11,
+      "balls": 16,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Sikandar Raza",
+      "dismissal": "c David Miller b Kwena Maphaka",
+      "runs": 73,
+      "balls": 43,
+      "fours": 8,
+      "sixes": 4
+    },
+    {
+      "player": "Ryan Burl",
+      "dismissal": "lbw b Lungi Ngidi",
+      "runs": 5,
+      "balls": 5,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Tony Munyonga",
+      "dismissal": "b Corbin Bosch",
+      "runs": 2,
+      "balls": 5,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Clive Madande",
+      "dismissal": "not out",
+      "runs": 26,
+      "balls": 20,
+      "fours": 3,
+      "sixes": 0
+    },
+    {
+      "player": "Brad Evans",
+      "dismissal": "b Corbin Bosch",
+      "runs": 8,
+      "balls": 11,
+      "fours": 0,
+      "sixes": 1
+    },
+    {
+      "player": "Wellington Masakadza",
+      "dismissal": "not out",
+      "runs": 1,
+      "balls": 1,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Aiden Markram",
+      "dismissal": "b Sikandar Raza",
+      "runs": 4,
+      "balls": 5,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Quinton de Kock",
+      "dismissal": "c Tadiwanashe Marumani b Sikandar Raza",
+      "runs": 0,
+      "balls": 2,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Ryan Rickelton",
+      "dismissal": "c Ryan Burl b Brad Evans",
+      "runs": 31,
+      "balls": 22,
+      "fours": 0,
+      "sixes": 4
+    },
+    {
+      "player": "Dewald Brevis",
+      "dismissal": "c Ryan Burl b Sikandar Raza",
+      "runs": 42,
+      "balls": 18,
+      "fours": 2,
+      "sixes": 4
+    },
+    {
+      "player": "David Miller",
+      "dismissal": "c Dion Myers b Blessing Muzarabani",
+      "runs": 22,
+      "balls": 16,
+      "fours": 2,
+      "sixes": 2
+    },
+    {
+      "player": "Tristan Stubbs",
+      "dismissal": "not out",
+      "runs": 21,
+      "balls": 24,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "George Linde",
+      "dismissal": "not out",
+      "runs": 30,
+      "balls": 21,
+      "fours": 2,
+      "sixes": 1
+    }
+  ],
+  "bowling": [
+    {
+      "player": "George Linde",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 22,
+      "wickets": 1,
+      "dots": 0
+    },
+    {
+      "player": "Kwena Maphaka",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 21,
+      "wickets": 2,
+      "dots": 0
+    },
+    {
+      "player": "Lungi Ngidi",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 29,
+      "wickets": 1,
+      "dots": 0
+    },
+    {
+      "player": "Anrich Nortje",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 29,
+      "wickets": 1,
+      "dots": 0
+    },
+    {
+      "player": "Corbin Bosch",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 40,
+      "wickets": 2,
+      "dots": 0
+    },
+    {
+      "player": "Aiden Markram",
+      "balls": 6,
+      "maidens": 0,
+      "runs": 11,
+      "wickets": 0,
+      "dots": 0
+    },
+    {
+      "player": "Sikandar Raza",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 29,
+      "wickets": 3,
+      "dots": 0
+    },
+    {
+      "player": "Blessing Muzarabani",
+      "balls": 23,
+      "maidens": 0,
+      "runs": 32,
+      "wickets": 1,
+      "dots": 0
+    },
+    {
+      "player": "Brad Evans",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 22,
+      "wickets": 1,
+      "dots": 0
+    },
+    {
+      "player": "Graeme Cremer",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 27,
+      "wickets": 0,
+      "dots": 0
+    },
+    {
+      "player": "Wellington Masakadza",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 23,
+      "wickets": 0,
+      "dots": 0
+    },
+    {
+      "player": "Ryan Burl",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 12,
+      "wickets": 0,
+      "dots": 0
+    },
+    {
+      "player": "Brian Bennett",
+      "balls": 6,
+      "maidens": 0,
+      "runs": 9,
+      "wickets": 0,
+      "dots": 0
+    }
+  ],
+  "fielding": {
+    "Aiden Markram": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Dewald Brevis": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "David Miller": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Tadiwanashe Marumani": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Ryan Burl": {
+      "catches": 2,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Dion Myers": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    }
+  },
+  "scorecard_url": "https://www.cricbuzz.com/live-cricket-scorecard/139450/",
+  "man_of_the_match": null,
+  "cricinfo_url": "https://www.espncricinfo.com/series/icc-men-s-t20-world-cup-2025-26-1502138/south-africa-vs-zimbabwe-51st-match-super-eights-group-1-1512769/live-cricket-score"
+}
