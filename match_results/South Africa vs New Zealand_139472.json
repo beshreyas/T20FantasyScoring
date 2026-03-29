@@ -1,0 +1,229 @@
+{
+  "match_id": "139472",
+  "batting": [
+    {
+      "player": "Aiden Markram",
+      "dismissal": "c Daryl Mitchell b Rachin Ravindra",
+      "runs": 18,
+      "balls": 20,
+      "fours": 1,
+      "sixes": 1
+    },
+    {
+      "player": "Quinton de Kock",
+      "dismissal": "c Lockie Ferguson b Cole McConchie",
+      "runs": 10,
+      "balls": 8,
+      "fours": 1,
+      "sixes": 1
+    },
+    {
+      "player": "Ryan Rickelton",
+      "dismissal": "c Finn Allen b Cole McConchie",
+      "runs": 0,
+      "balls": 1,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Dewald Brevis",
+      "dismissal": "c Mitchell Santner b James Neesham",
+      "runs": 34,
+      "balls": 27,
+      "fours": 3,
+      "sixes": 2
+    },
+    {
+      "player": "David Miller",
+      "dismissal": "c Daryl Mitchell b Rachin Ravindra",
+      "runs": 6,
+      "balls": 6,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Tristan Stubbs",
+      "dismissal": "b Lockie Ferguson",
+      "runs": 29,
+      "balls": 24,
+      "fours": 2,
+      "sixes": 1
+    },
+    {
+      "player": "Marco Jansen",
+      "dismissal": "not out",
+      "runs": 55,
+      "balls": 30,
+      "fours": 2,
+      "sixes": 5
+    },
+    {
+      "player": "Corbin Bosch",
+      "dismissal": "b Matt Henry",
+      "runs": 2,
+      "balls": 3,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Kagiso Rabada",
+      "dismissal": "c James Neesham b Matt Henry",
+      "runs": 0,
+      "balls": 1,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Keshav Maharaj",
+      "dismissal": "not out",
+      "runs": 1,
+      "balls": 1,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Tim Seifert",
+      "dismissal": "b Kagiso Rabada",
+      "runs": 58,
+      "balls": 33,
+      "fours": 7,
+      "sixes": 2
+    },
+    {
+      "player": "Finn Allen",
+      "dismissal": "not out",
+      "runs": 100,
+      "balls": 33,
+      "fours": 10,
+      "sixes": 8
+    },
+    {
+      "player": "Rachin Ravindra",
+      "dismissal": "not out",
+      "runs": 13,
+      "balls": 11,
+      "fours": 2,
+      "sixes": 0
+    }
+  ],
+  "bowling": [
+    {
+      "player": "Matt Henry",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 34,
+      "wickets": 2,
+      "dots": 0
+    },
+    {
+      "player": "Cole McConchie",
+      "balls": 6,
+      "maidens": 0,
+      "runs": 9,
+      "wickets": 2,
+      "dots": 0
+    },
+    {
+      "player": "Lockie Ferguson",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 29,
+      "wickets": 1,
+      "dots": 0
+    },
+    {
+      "player": "James Neesham",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 42,
+      "wickets": 1,
+      "dots": 0
+    },
+    {
+      "player": "Mitchell Santner",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 25,
+      "wickets": 0,
+      "dots": 0
+    },
+    {
+      "player": "Rachin Ravindra",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 29,
+      "wickets": 2,
+      "dots": 0
+    },
+    {
+      "player": "Marco Jansen",
+      "balls": 17,
+      "maidens": 0,
+      "runs": 53,
+      "wickets": 0,
+      "dots": 0
+    },
+    {
+      "player": "Kagiso Rabada",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 28,
+      "wickets": 1,
+      "dots": 0
+    },
+    {
+      "player": "Lungi Ngidi",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 22,
+      "wickets": 0,
+      "dots": 0
+    },
+    {
+      "player": "Corbin Bosch",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 35,
+      "wickets": 0,
+      "dots": 0
+    },
+    {
+      "player": "Keshav Maharaj",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 33,
+      "wickets": 0,
+      "dots": 0
+    }
+  ],
+  "fielding": {
+    "Daryl Mitchell": {
+      "catches": 2,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Lockie Ferguson": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Finn Allen": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Mitchell Santner": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "James Neesham": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    }
+  },
+  "scorecard_url": "https://www.cricbuzz.com/live-cricket-scorecard/139472/",
+  "man_of_the_match": null,
+  "cricinfo_url": "https://www.espncricinfo.com/series/icc-men-s-t20-world-cup-2025-26-1502138/new-zealand-vs-south-africa-1st-semi-final-1512771/live-cricket-score"
+}

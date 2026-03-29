@@ -75,14 +75,14 @@ This is a simple Flask web application that provides an API and a user-friendly 
 ]
 </code></pre>
 
-<h3>GET /match/&lt;match_id&gt;</h3>
-<p>Returns completed match data (batting, bowling, fielding) from the <strong>Cricbuzz</strong> scorecard. Optional query parameter <code>cricinfo_url</code> (ESPN Cricinfo full-scorecard URL) enables:</p>
+<h3>GET /t/&lt;slug&gt;/match/&lt;match_id&gt;?series_id=&lt;id&gt;</h3>
+<p>Returns completed match data (batting, bowling with dots, fielding, man_of_the_match) from the <strong>ESPN Cricinfo API</strong>. All data comes from a single API call — no Selenium or Chrome needed.</p>
 <ul>
-  <li><strong>Dots</strong> – per-bowler dot-ball counts from the Cricinfo scorecard &quot;0s&quot; column.</li>
-  <li><strong>man_of_the_match</strong> – from the Cricinfo MVP (match-impact-player) page.</li>
+  <li><strong>series_id</strong> – ESPN Cricinfo series ID (query param, or set <code>CRICINFO_SERIES_ID</code> in <code>.env</code>).</li>
+  <li><strong>match_id</strong> – ESPN Cricinfo match ID (numeric, from the URL path).</li>
 </ul>
-<p>Example: <code>GET /match/139373?cricinfo_url=https://www.espncricinfo.com/series/.../.../full-scorecard</code></p>
-<p>Without <code>cricinfo_url</code>, or if Selenium/Chrome are unavailable, dots are 0 and <code>man_of_the_match</code> is null. See <strong>SETUP.md</strong> for details.</p>
+<p>Example: <code>GET /t/wt20_2026/match/1512760?series_id=1502138</code></p>
+<p>See <strong>SETUP.md</strong> for details on finding series and match IDs.</p>
 
 <h2>Live Score</h2>
 <ul>
@@ -110,16 +110,16 @@ This is a simple Flask web application that provides an API and a user-friendly 
   <li>🎯 Added a user-friendly UI website for interacting with live scores, player stats, schedule, and player comparison.</li>
   <li>⚡ Optimized the codebase for better performance and reliability.</li>
   <li>🔄 Rebased and updated to ensure compatibility with the latest dependencies.</li>
-  <li>📊 <strong>Match endpoint</strong> – <code>/match/&lt;id&gt;</code> returns batting, bowling, fielding; with <code>cricinfo_url</code>, also returns dots (from Cricinfo 0s column) and <code>man_of_the_match</code> (from Cricinfo MVP page). Requires Chrome/Selenium for Cricinfo.</li>
-  <li>🗑️ <strong>Removed</strong> – Cricbuzz over-by-over dot counting (<code>dots.py</code>) was removed; dots are now taken only from ESPN Cricinfo.</li>
+  <li>📊 <strong>Match endpoint</strong> – All match data (batting, bowling with dots, fielding, man_of_the_match) now comes from the <strong>ESPN Cricinfo API</strong> in a single call. No Selenium or Chrome needed.</li>
+  <li>🗑️ <strong>Removed</strong> – Cricbuzz scorecard scraping, Selenium-based Cricinfo scrapers (<code>batting.py</code>, <code>bowling.py</code>, <code>fielding.py</code>, <code>cricinfo_dots.py</code>, <code>cricinfo_mom.py</code>).</li>
 </ul>
 <p>Enjoy the latest version of the Cricket API and website! 🏏</p>
 
 <h2>For maintainers / next steps</h2>
 <ul>
-  <li>See <strong>SETUP.md</strong> for setup, match endpoint behaviour, Cricinfo (dots and MoM), and which scripts were removed.</li>
-  <li>Dots and man_of_the_match depend on ESPN Cricinfo pages (JS-rendered); Selenium + Chrome are required. If Cricinfo changes their HTML, update <code>cricinfo_dots.py</code> and <code>cricinfo_mom.py</code>.</li>
-  <li>Run <code>python cricinfo_mom.py &quot;&lt;cricinfo_full_scorecard_url&gt;&quot; --visible --save-html</code> to debug MoM parsing.</li>
+  <li>See <strong>SETUP.md</strong> for setup, match endpoint behaviour, and Cricinfo API details.</li>
+  <li>All match data comes from ESPN Cricinfo's <code>hs-consumer-api</code> (undocumented). If this API changes, update <code>scrape_match.py</code>.</li>
+  <li>Match and series IDs come from Cricinfo URLs &mdash; see <code>CRICBUZZ_MATCH_URLS.md</code> for details.</li>
 </ul>
 
 <H2>Disclaimer ⚠️</H2>

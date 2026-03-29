@@ -1,0 +1,632 @@
+[
+  {
+    "player_name": "Rachin Ravindra",
+    "team": "GKKani",
+    "matches_played": 3,
+    "total_points": 497.0
+  },
+  {
+    "player_name": "Will Jacks",
+    "team": "RSK",
+    "matches_played": 3,
+    "total_points": 459.0
+  },
+  {
+    "player_name": "Sikandar Raza",
+    "team": "PPT",
+    "matches_played": 3,
+    "total_points": 424.0
+  },
+  {
+    "player_name": "Finn Allen",
+    "team": "GKKani",
+    "matches_played": 3,
+    "total_points": 381
+  },
+  {
+    "player_name": "Sahibzada Farhan",
+    "team": "GKKani",
+    "matches_played": 2,
+    "total_points": 374
+  },
+  {
+    "player_name": "Shimron Hetmyer",
+    "team": "CNI",
+    "matches_played": 3,
+    "total_points": 362
+  },
+  {
+    "player_name": "Jason Holder",
+    "team": "CNI",
+    "matches_played": 3,
+    "total_points": 359.0
+  },
+  {
+    "player_name": "Harry Brook",
+    "team": "PPT",
+    "matches_played": 3,
+    "total_points": 331
+  },
+  {
+    "player_name": "Dasun Shanaka",
+    "team": "RamSurya",
+    "matches_played": 3,
+    "total_points": 323.0
+  },
+  {
+    "player_name": "Liam Dawson",
+    "team": "PPT",
+    "matches_played": 3,
+    "total_points": 296.0
+  },
+  {
+    "player_name": "Maheesh Theekshana",
+    "team": "RamSurya",
+    "matches_played": 3,
+    "total_points": 296.0
+  },
+  {
+    "player_name": "Sanju Samson",
+    "team": "Unknown",
+    "matches_played": 2,
+    "total_points": 296
+  },
+  {
+    "player_name": "Aiden Markram",
+    "team": "CNI",
+    "matches_played": 4,
+    "total_points": 291.0
+  },
+  {
+    "player_name": "Dewald Brevis",
+    "team": "PPT",
+    "matches_played": 4,
+    "total_points": 286
+  },
+  {
+    "player_name": "Dunith Wellalage",
+    "team": "PPT",
+    "matches_played": 3,
+    "total_points": 273.0
+  },
+  {
+    "player_name": "Brian Bennett",
+    "team": "GKKani",
+    "matches_played": 3,
+    "total_points": 270.0
+  },
+  {
+    "player_name": "Marco Jansen",
+    "team": "GKKani",
+    "matches_played": 3,
+    "total_points": 269.0
+  },
+  {
+    "player_name": "Hardik Pandya",
+    "team": "GKKani",
+    "matches_played": 3,
+    "total_points": 264.0
+  },
+  {
+    "player_name": "Tim Seifert",
+    "team": "RamSurya",
+    "matches_played": 3,
+    "total_points": 249
+  },
+  {
+    "player_name": "Mitchell Santner",
+    "team": "RamSurya",
+    "matches_played": 3,
+    "total_points": 243.0
+  },
+  {
+    "player_name": "Dilshan Madushanka",
+    "team": "RSK",
+    "matches_played": 3,
+    "total_points": 241.0
+  },
+  {
+    "player_name": "Corbin Bosch",
+    "team": "GKKani",
+    "matches_played": 4,
+    "total_points": 241.0
+  },
+  {
+    "player_name": "Fakhar Zaman",
+    "team": "Unknown",
+    "matches_played": 2,
+    "total_points": 240
+  },
+  {
+    "player_name": "Lungi Ngidi",
+    "team": "RSK",
+    "matches_played": 4,
+    "total_points": 235.0
+  },
+  {
+    "player_name": "Glenn Phillips",
+    "team": "RamSurya",
+    "matches_played": 2,
+    "total_points": 234.0
+  },
+  {
+    "player_name": "Jasprit Bumrah",
+    "team": "RSK",
+    "matches_played": 3,
+    "total_points": 234.0
+  },
+  {
+    "player_name": "Adil Rashid",
+    "team": "RSK",
+    "matches_played": 3,
+    "total_points": 230.0
+  },
+  {
+    "player_name": "Arshdeep Singh",
+    "team": "RSK",
+    "matches_played": 3,
+    "total_points": 222.0
+  },
+  {
+    "player_name": "David Miller",
+    "team": "GKKani",
+    "matches_played": 3,
+    "total_points": 218
+  },
+  {
+    "player_name": "Matt Henry",
+    "team": "CNI",
+    "matches_played": 3,
+    "total_points": 206.0
+  },
+  {
+    "player_name": "Rovman Powell",
+    "team": "Unknown",
+    "matches_played": 3,
+    "total_points": 203
+  },
+  {
+    "player_name": "Dushmantha Chameera",
+    "team": "PPT",
+    "matches_played": 3,
+    "total_points": 199.0
+  },
+  {
+    "player_name": "Tristan Stubbs",
+    "team": "RSK",
+    "matches_played": 3,
+    "total_points": 199
+  },
+  {
+    "player_name": "Quinton de Kock",
+    "team": "RamSurya",
+    "matches_played": 4,
+    "total_points": 197
+  },
+  {
+    "player_name": "Akeal Hosein",
+    "team": "RamSurya",
+    "matches_played": 2,
+    "total_points": 194.0
+  },
+  {
+    "player_name": "Tilak Varma",
+    "team": "RSK",
+    "matches_played": 3,
+    "total_points": 190
+  },
+  {
+    "player_name": "Jofra Archer",
+    "team": "CNI",
+    "matches_played": 3,
+    "total_points": 189.0
+  },
+  {
+    "player_name": "Abhishek Sharma",
+    "team": "PPT",
+    "matches_played": 3,
+    "total_points": 188
+  },
+  {
+    "player_name": "Gudakesh Motie",
+    "team": "PPT",
+    "matches_played": 3,
+    "total_points": 179.0
+  },
+  {
+    "player_name": "Brad Evans",
+    "team": "Unknown",
+    "matches_played": 3,
+    "total_points": 179.0
+  },
+  {
+    "player_name": "Shaheen Afridi",
+    "team": "Unknown",
+    "matches_played": 2,
+    "total_points": 177.0
+  },
+  {
+    "player_name": "Ryan Rickelton",
+    "team": "PPT",
+    "matches_played": 4,
+    "total_points": 177
+  },
+  {
+    "player_name": "Jamie Overton",
+    "team": "RSK",
+    "matches_played": 2,
+    "total_points": 169.0
+  },
+  {
+    "player_name": "Cole McConchie",
+    "team": "Unknown",
+    "matches_played": 3,
+    "total_points": 158.0
+  },
+  {
+    "player_name": "Keshav Maharaj",
+    "team": "RamSurya",
+    "matches_played": 3,
+    "total_points": 148.0
+  },
+  {
+    "player_name": "Romario Shepherd",
+    "team": "GKKani",
+    "matches_played": 3,
+    "total_points": 147.0
+  },
+  {
+    "player_name": "Kagiso Rabada",
+    "team": "CNI",
+    "matches_played": 3,
+    "total_points": 137.0
+  },
+  {
+    "player_name": "Abrar Ahmed",
+    "team": "Unknown",
+    "matches_played": 1,
+    "total_points": 136.0
+  },
+  {
+    "player_name": "Suryakumar Yadav",
+    "team": "RSK",
+    "matches_played": 3,
+    "total_points": 133
+  },
+  {
+    "player_name": "Sherfane Rutherford",
+    "team": "GKKani",
+    "matches_played": 3,
+    "total_points": 125
+  },
+  {
+    "player_name": "Shivam Dube",
+    "team": "GKKani",
+    "matches_played": 3,
+    "total_points": 124.0
+  },
+  {
+    "player_name": "Matthew Forde",
+    "team": "Unknown",
+    "matches_played": 3,
+    "total_points": 124.0
+  },
+  {
+    "player_name": "Blessing Muzarabani",
+    "team": "CNI",
+    "matches_played": 3,
+    "total_points": 124.0
+  },
+  {
+    "player_name": "Roston Chase",
+    "team": "RSK",
+    "matches_played": 2,
+    "total_points": 119.0
+  },
+  {
+    "player_name": "Lockie Ferguson",
+    "team": "GKKani",
+    "matches_played": 3,
+    "total_points": 115.0
+  },
+  {
+    "player_name": "Philip Salt",
+    "team": "PPT",
+    "matches_played": 3,
+    "total_points": 111
+  },
+  {
+    "player_name": "Charith Asalanka",
+    "team": "Unknown",
+    "matches_played": 2,
+    "total_points": 109.0
+  },
+  {
+    "player_name": "Pavan Rathnayake",
+    "team": "RamSurya",
+    "matches_played": 3,
+    "total_points": 107
+  },
+  {
+    "player_name": "Mohammad Nawaz",
+    "team": "PPT",
+    "matches_played": 2,
+    "total_points": 104.0
+  },
+  {
+    "player_name": "Shai Hope (c & wk)",
+    "team": "PPT",
+    "matches_played": 3,
+    "total_points": 104
+  },
+  {
+    "player_name": "Richard Ngarava",
+    "team": "Unknown",
+    "matches_played": 2,
+    "total_points": 103.0
+  },
+  {
+    "player_name": "Kamindu Mendis",
+    "team": "RamSurya",
+    "matches_played": 3,
+    "total_points": 102
+  },
+  {
+    "player_name": "Sam Curran",
+    "team": "CNI",
+    "matches_played": 3,
+    "total_points": 100.0
+  },
+  {
+    "player_name": "Rehan Ahmed",
+    "team": "Unknown",
+    "matches_played": 1,
+    "total_points": 100.0
+  },
+  {
+    "player_name": "Jacob Bethell",
+    "team": "PPT",
+    "matches_played": 3,
+    "total_points": 99.0
+  },
+  {
+    "player_name": "Shamar Joseph",
+    "team": "PPT",
+    "matches_played": 3,
+    "total_points": 98.0
+  },
+  {
+    "player_name": "George Linde",
+    "team": "Unknown",
+    "matches_played": 1,
+    "total_points": 95.0
+  },
+  {
+    "player_name": "Tom Banton",
+    "team": "CNI",
+    "matches_played": 3,
+    "total_points": 94
+  },
+  {
+    "player_name": "Varun Chakaravarthy",
+    "team": "RamSurya",
+    "matches_played": 3,
+    "total_points": 94.0
+  },
+  {
+    "player_name": "Ishan Kishan",
+    "team": "RSK",
+    "matches_played": 3,
+    "total_points": 92
+  },
+  {
+    "player_name": "Kamil Mishara",
+    "team": "Unknown",
+    "matches_played": 2,
+    "total_points": 86
+  },
+  {
+    "player_name": "Usman Khan",
+    "team": "GKKani",
+    "matches_played": 2,
+    "total_points": 83
+  },
+  {
+    "player_name": "Dion Myers",
+    "team": "Unknown",
+    "matches_played": 3,
+    "total_points": 82.0
+  },
+  {
+    "player_name": "Usman Tariq",
+    "team": "RamSurya",
+    "matches_played": 2,
+    "total_points": 80.0
+  },
+  {
+    "player_name": "Tadiwanashe Marumani",
+    "team": "RSK",
+    "matches_played": 3,
+    "total_points": 77
+  },
+  {
+    "player_name": "Kwena Maphaka",
+    "team": "Unknown",
+    "matches_played": 1,
+    "total_points": 77.0
+  },
+  {
+    "player_name": "Daryl Mitchell",
+    "team": "RamSurya",
+    "matches_played": 3,
+    "total_points": 72
+  },
+  {
+    "player_name": "Dushan Hemantha",
+    "team": "CNI",
+    "matches_played": 2,
+    "total_points": 66.0
+  },
+  {
+    "player_name": "Axar Patel",
+    "team": "CNI",
+    "matches_played": 2,
+    "total_points": 58.0
+  },
+  {
+    "player_name": "Shadab Khan",
+    "team": "CNI",
+    "matches_played": 2,
+    "total_points": 56.0
+  },
+  {
+    "player_name": "Ryan Burl",
+    "team": "RamSurya",
+    "matches_played": 3,
+    "total_points": 56.0
+  },
+  {
+    "player_name": "Brandon King",
+    "team": "Unknown",
+    "matches_played": 2,
+    "total_points": 50
+  },
+  {
+    "player_name": "Tony Munyonga",
+    "team": "Unknown",
+    "matches_played": 3,
+    "total_points": 49
+  },
+  {
+    "player_name": "Clive Madande",
+    "team": "Unknown",
+    "matches_played": 1,
+    "total_points": 48
+  },
+  {
+    "player_name": "Tashinga Musekiwa",
+    "team": "Unknown",
+    "matches_played": 2,
+    "total_points": 47
+  },
+  {
+    "player_name": "Naseem Shah",
+    "team": "Unknown",
+    "matches_played": 1,
+    "total_points": 46.0
+  },
+  {
+    "player_name": "Anrich Nortje",
+    "team": "Unknown",
+    "matches_played": 1,
+    "total_points": 44.0
+  },
+  {
+    "player_name": "Babar Azam",
+    "team": "RSK",
+    "matches_played": 1,
+    "total_points": 40
+  },
+  {
+    "player_name": "James Neesham",
+    "team": "Unknown",
+    "matches_played": 1,
+    "total_points": 34.0
+  },
+  {
+    "player_name": "Mark Chapman",
+    "team": "Unknown",
+    "matches_played": 2,
+    "total_points": 28
+  },
+  {
+    "player_name": "Salman Mirza",
+    "team": "Unknown",
+    "matches_played": 1,
+    "total_points": 25.0
+  },
+  {
+    "player_name": "Washington Sundar",
+    "team": "Unknown",
+    "matches_played": 1,
+    "total_points": 22.0
+  },
+  {
+    "player_name": "Janith Liyanage",
+    "team": "Unknown",
+    "matches_played": 1,
+    "total_points": 22.0
+  },
+  {
+    "player_name": "Graeme Cremer",
+    "team": "Unknown",
+    "matches_played": 2,
+    "total_points": 22.0
+  },
+  {
+    "player_name": "Ish Sodhi",
+    "team": "Unknown",
+    "matches_played": 2,
+    "total_points": 21.0
+  },
+  {
+    "player_name": "Jos Buttler",
+    "team": "RSK",
+    "matches_played": 3,
+    "total_points": 19
+  },
+  {
+    "player_name": "(sub)Saim Ayub",
+    "team": "PPT",
+    "matches_played": 1,
+    "total_points": 15
+  },
+  {
+    "player_name": "Saim Ayub",
+    "team": "PPT",
+    "matches_played": 1,
+    "total_points": 13.0
+  },
+  {
+    "player_name": "Tinotenda Maposa",
+    "team": "Unknown",
+    "matches_played": 1,
+    "total_points": 11.0
+  },
+  {
+    "player_name": "Kusal Mendis",
+    "team": "CNI",
+    "matches_played": 2,
+    "total_points": 8
+  },
+  {
+    "player_name": "Rinku Singh",
+    "team": "Unknown",
+    "matches_played": 1,
+    "total_points": 3
+  },
+  {
+    "player_name": "Pathum Nissanka",
+    "team": "RamSurya",
+    "matches_played": 3,
+    "total_points": 2
+  },
+  {
+    "player_name": "Wellington Masakadza",
+    "team": "CNI",
+    "matches_played": 1,
+    "total_points": 2.0
+  },
+  {
+    "player_name": "Khawaja Nafay",
+    "team": "Unknown",
+    "matches_played": 1,
+    "total_points": 1
+  },
+  {
+    "player_name": "Salman Agha",
+    "team": "GKKani",
+    "matches_played": 2,
+    "total_points": -6
+  }
+]

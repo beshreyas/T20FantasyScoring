@@ -1,0 +1,268 @@
+{
+  "match_id": "139426",
+  "batting": [
+    {
+      "player": "Sanju Samson",
+      "dismissal": "c Ryan Burl b Blessing Muzarabani",
+      "runs": 24,
+      "balls": 15,
+      "fours": 1,
+      "sixes": 2
+    },
+    {
+      "player": "Abhishek Sharma",
+      "dismissal": "c Sikandar Raza b Tinotenda Maposa",
+      "runs": 55,
+      "balls": 30,
+      "fours": 4,
+      "sixes": 4
+    },
+    {
+      "player": "Ishan Kishan",
+      "dismissal": "c Richard Ngarava b Sikandar Raza",
+      "runs": 38,
+      "balls": 24,
+      "fours": 4,
+      "sixes": 1
+    },
+    {
+      "player": "Suryakumar Yadav",
+      "dismissal": "c Tashinga Musekiwa b Richard Ngarava",
+      "runs": 33,
+      "balls": 13,
+      "fours": 3,
+      "sixes": 2
+    },
+    {
+      "player": "Hardik Pandya",
+      "dismissal": "not out",
+      "runs": 50,
+      "balls": 23,
+      "fours": 2,
+      "sixes": 4
+    },
+    {
+      "player": "Tilak Varma",
+      "dismissal": "not out",
+      "runs": 44,
+      "balls": 16,
+      "fours": 3,
+      "sixes": 4
+    },
+    {
+      "player": "Brian Bennett",
+      "dismissal": "not out",
+      "runs": 97,
+      "balls": 59,
+      "fours": 8,
+      "sixes": 6
+    },
+    {
+      "player": "Tadiwanashe Marumani",
+      "dismissal": "c Ishan Kishan b Axar Patel",
+      "runs": 20,
+      "balls": 20,
+      "fours": 0,
+      "sixes": 2
+    },
+    {
+      "player": "Dion Myers",
+      "dismissal": "c Tilak Varma b Varun Chakaravarthy",
+      "runs": 6,
+      "balls": 9,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Sikandar Raza",
+      "dismissal": "c Abhishek Sharma b Arshdeep Singh",
+      "runs": 31,
+      "balls": 21,
+      "fours": 2,
+      "sixes": 2
+    },
+    {
+      "player": "Ryan Burl",
+      "dismissal": "lbw b Arshdeep Singh",
+      "runs": 0,
+      "balls": 2,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Tony Munyonga",
+      "dismissal": "b Arshdeep Singh",
+      "runs": 11,
+      "balls": 6,
+      "fours": 2,
+      "sixes": 0
+    },
+    {
+      "player": "Tashinga Musekiwa",
+      "dismissal": "c Sanju Samson b Shivam Dube",
+      "runs": 7,
+      "balls": 4,
+      "fours": 0,
+      "sixes": 1
+    },
+    {
+      "player": "Brad Evans",
+      "dismissal": "not out",
+      "runs": 1,
+      "balls": 1,
+      "fours": 0,
+      "sixes": 0
+    }
+  ],
+  "bowling": [
+    {
+      "player": "Richard Ngarava",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 62,
+      "wickets": 1,
+      "dots": 5
+    },
+    {
+      "player": "Blessing Muzarabani",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 43,
+      "wickets": 1,
+      "dots": 5
+    },
+    {
+      "player": "Tinotenda Maposa",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 40,
+      "wickets": 1,
+      "dots": 2
+    },
+    {
+      "player": "Brad Evans",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 52,
+      "wickets": 0,
+      "dots": 7
+    },
+    {
+      "player": "Sikandar Raza",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 29,
+      "wickets": 1,
+      "dots": 4
+    },
+    {
+      "player": "Brian Bennett",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 16,
+      "wickets": 0,
+      "dots": 1
+    },
+    {
+      "player": "Ryan Burl",
+      "balls": 6,
+      "maidens": 0,
+      "runs": 10,
+      "wickets": 0,
+      "dots": 2
+    },
+    {
+      "player": "Arshdeep Singh",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 24,
+      "wickets": 3,
+      "dots": 12
+    },
+    {
+      "player": "Hardik Pandya",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 21,
+      "wickets": 0,
+      "dots": 8
+    },
+    {
+      "player": "Jasprit Bumrah",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 21,
+      "wickets": 0,
+      "dots": 8
+    },
+    {
+      "player": "Varun Chakaravarthy",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 35,
+      "wickets": 1,
+      "dots": 0
+    },
+    {
+      "player": "Axar Patel",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 35,
+      "wickets": 1,
+      "dots": 7
+    },
+    {
+      "player": "Shivam Dube",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 46,
+      "wickets": 1,
+      "dots": 2
+    }
+  ],
+  "fielding": {
+    "Ryan Burl": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Sikandar Raza": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Richard Ngarava": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Tashinga Musekiwa": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Ishan Kishan": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Tilak Varma": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Abhishek Sharma": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Sanju Samson": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    }
+  },
+  "scorecard_url": "https://www.cricbuzz.com/live-cricket-scorecard/139426/",
+  "man_of_the_match": "Hardik Pandya",
+  "cricinfo_url": "https://www.espncricinfo.com/series/icc-men-s-t20-world-cup-2025-26-1502138/india-vs-zimbabwe-48th-match-super-eights-group-1-1512766/full-scorecard"
+}

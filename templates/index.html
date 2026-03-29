@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T20 Fantasy Hub</title>
+    <meta name="description" content="Multi-tournament T20 fantasy cricket hub with live scoring and leaderboards.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d6efd;
+            --accent: #00c9a7;
+            --dark-bg: #0b0f19;
+            --card-bg: rgba(255, 255, 255, 0.06);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --glow: 0 0 30px rgba(0, 201, 167, .15);
+        }
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: #e2e8f0;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: rgba(11, 15, 25, .85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.35rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+
+        .nav-link {
+            color: #94a3b8 !important;
+            font-weight: 600;
+            transition: color .2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #fff !important;
+        }
+
+        .hero {
+            padding: 4.5rem 0 3rem;
+            text-align: center;
+            background: radial-gradient(ellipse at 50% 0%, rgba(13, 110, 253, .12) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-weight: 800;
+            font-size: 2.6rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            max-width: 520px;
+            margin: .75rem auto 0;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: transform .25s, box-shadow .25s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--glow);
+        }
+
+        .glass-card h5 {
+            font-weight: 700;
+            margin-bottom: .75rem;
+        }
+
+        .section-title {
+            font-weight: 700;
+            font-size: 1.35rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .badge-live {
+            background: #ef4444;
+            animation: pulse 1.5s infinite;
+            font-size: .7rem;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: .5
+            }
+        }
+
+        .list-group-item {
+            background: transparent;
+            border-color: var(--card-border);
+            color: #cbd5e1;
+            font-size: .92rem;
+        }
+
+        .fantasy-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .fantasy-table th {
+            color: #94a3b8;
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            padding: .6rem .75rem;
+            border-bottom: 1px solid var(--card-border);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .fantasy-table td {
+            padding: .55rem .75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            font-size: .88rem;
+            vertical-align: middle;
+        }
+
+        .fantasy-table tbody tr {
+            transition: background .15s;
+        }
+
+        .fantasy-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .rank-col {
+            font-weight: 700;
+            color: var(--accent);
+            width: 40px;
+            text-align: center;
+        }
+
+        .pts-col {
+            font-weight: 700;
+            color: #f1f5f9;
+        }
+
+        .team-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: .75rem;
+            letter-spacing: .04em;
+        }
+
+        .clickable-row {
+            cursor: pointer;
+        }
+
+        .clickable-row:hover {
+            background: rgba(255, 255, 255, 0.06) !important;
+        }
+
+        .clickable-name {
+            cursor: pointer;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .clickable-name:hover {
+            text-decoration: underline;
+        }
+
+        .btn-accent {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border: none;
+            color: #fff;
+            font-weight: 600;
+            border-radius: 12px;
+            padding: .65rem 1.5rem;
+            transition: opacity .2s;
+        }
+
+        .btn-accent:hover {
+            opacity: .88;
+            color: #fff;
+        }
+
+        .btn-back {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--card-border);
+            color: #94a3b8;
+            border-radius: 10px;
+            padding: .4rem 1rem;
+            font-size: .85rem;
+            font-weight: 600;
+            transition: all .2s;
+        }
+
+        .btn-back:hover {
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        .modal-content {
+            background: #131927;
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            color: #e2e8f0;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .modal-header .btn-close {
+            filter: invert(1) grayscale(1) brightness(2);
+        }
+
+        .modal-footer {
+            border-top: 1px solid var(--card-border);
+        }
+
+        .modal-body {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .modal-body::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 3px;
+        }
+
+        .modal-body::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .view-section {
+            display: none;
+        }
+
+        .view-section.active {
+            display: block;
+        }
+
+        .add-match-form .form-control,
+        .compare-section .form-control,
+        .search-box .form-control {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--card-border);
+            color: #fff;
+            border-radius: 12px;
+            padding: .65rem 1rem;
+        }
+
+        .add-match-form .form-control::placeholder,
+        .compare-section .form-control::placeholder,
+        .search-box .form-control::placeholder {
+            color: #64748b;
+        }
+
+        .add-match-form .form-control:focus,
+        .compare-section .form-control:focus,
+        .search-box .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 201, 167, .15);
+        }
+
+        .add-match-form .form-label {
+            color: #94a3b8;
+            font-weight: 600;
+            font-size: .85rem;
+        }
+
+        .status-box {
+            padding: .75rem 1rem;
+            border-radius: 12px;
+            font-size: .9rem;
+            margin-top: 1rem;
+        }
+
+        .status-box.success {
+            background: rgba(34, 197, 94, .15);
+            color: #86efac;
+            border: 1px solid rgba(34, 197, 94, .25);
+        }
+
+        .status-box.error {
+            background: rgba(239, 68, 68, .15);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, .25);
+        }
+
+        .status-box.loading {
+            background: rgba(59, 130, 246, .1);
+            color: #93c5fd;
+            border: 1px solid rgba(59, 130, 246, .2);
+        }
+
+        .match-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: .6rem .75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .match-list-item:last-child {
+            border-bottom: none;
+        }
+
+        .match-list-item .match-name {
+            font-weight: 600;
+        }
+
+        .match-list-item .match-id-label {
+            color: #64748b;
+            font-size: .8rem;
+        }
+
+        .btn-delete-match {
+            background: rgba(239, 68, 68, .15);
+            border: 1px solid rgba(239, 68, 68, .3);
+            color: #fca5a5;
+            border-radius: 8px;
+            padding: 2px 10px;
+            font-size: .78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .2s;
+        }
+
+        .btn-delete-match:hover {
+            background: rgba(239, 68, 68, .3);
+            color: #fff;
+        }
+
+        .match-entry-row {
+            display: flex;
+            gap: .5rem;
+            align-items: flex-end;
+            margin-bottom: .75rem;
+            padding-bottom: .75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .match-entry-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .match-entry-row .form-control {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--card-border);
+            color: #fff;
+            border-radius: 10px;
+            padding: .5rem .75rem;
+            font-size: .85rem;
+        }
+
+        .match-entry-row .form-control::placeholder {
+            color: #64748b;
+        }
+
+        .match-entry-row .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 201, 167, .15);
+        }
+
+        .match-entry-row .form-label {
+            color: #94a3b8;
+            font-weight: 600;
+            font-size: .75rem;
+            margin-bottom: .2rem;
+        }
+
+        .btn-remove-entry {
+            background: none;
+            border: none;
+            color: #ef4444;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: .3rem;
+            line-height: 1;
+        }
+
+        .btn-remove-entry:hover {
+            color: #fca5a5;
+        }
+
+        .btn-add-entry {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px dashed var(--card-border);
+            color: #94a3b8;
+            border-radius: 10px;
+            padding: .5rem;
+            font-size: .85rem;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            transition: all .2s;
+        }
+
+        .btn-add-entry:hover {
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .progress-log {
+            max-height: 200px;
+            overflow-y: auto;
+            font-size: .82rem;
+            margin-top: .75rem;
+        }
+
+        .progress-log .log-item {
+            padding: .3rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .progress-log .log-success {
+            color: #86efac;
+        }
+
+        .progress-log .log-error {
+            color: #fca5a5;
+        }
+
+        .progress-log .log-loading {
+            color: #93c5fd;
+        }
+
+        footer {
+            border-top: 1px solid var(--card-border);
+            color: #475569;
+            font-size: .82rem;
+        }
+
+        /* Tournament cards */
+        .tournament-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: transform .25s, box-shadow .25s, border-color .25s;
+        }
+
+        .tournament-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--glow);
+            border-color: var(--accent);
+        }
+
+        .tournament-card h5 {
+            font-weight: 700;
+            margin-bottom: .5rem;
+        }
+
+        .tournament-card .meta {
+            color: #64748b;
+            font-size: .82rem;
+        }
+
+        .tournament-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: .7rem;
+            background: rgba(0, 201, 167, .15);
+            color: var(--accent);
+            margin-bottom: .5rem;
+        }
+
+        /* Roster table */
+        .roster-action-btn {
+            background: none;
+            border: 1px solid var(--card-border);
+            color: #94a3b8;
+            border-radius: 6px;
+            padding: 2px 8px;
+            font-size: .78rem;
+            cursor: pointer;
+            transition: all .2s;
+        }
+
+        .roster-action-btn:hover {
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .roster-action-btn.danger {
+            border-color: rgba(239, 68, 68, .3);
+            color: #fca5a5;
+        }
+
+        .roster-action-btn.danger:hover {
+            border-color: #ef4444;
+            color: #fff;
+        }
+
+        .spinner-border {
+            width: 1.25rem;
+            height: 1.25rem;
+            border-width: 2px;
+        }
+
+        /* Tournament dropdown */
+        .tournament-dropdown .btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--card-border);
+            color: #e2e8f0;
+            border-radius: 10px;
+            padding: .35rem .9rem;
+            font-weight: 600;
+            font-size: .85rem;
+            transition: all .2s;
+        }
+
+        .tournament-dropdown .btn:hover,
+        .tournament-dropdown .btn:focus {
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .tournament-dropdown .dropdown-menu {
+            background: #131927;
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: .4rem;
+            min-width: 240px;
+        }
+
+        .tournament-dropdown .dropdown-item {
+            color: #cbd5e1;
+            border-radius: 8px;
+            padding: .45rem .75rem;
+            font-size: .85rem;
+            transition: background .15s;
+        }
+
+        .tournament-dropdown .dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+
+        .tournament-dropdown .dropdown-item.active {
+            background: rgba(0, 201, 167, .15);
+            color: var(--accent);
+        }
+
+        .tournament-dropdown .dropdown-divider {
+            border-color: var(--card-border);
+        }
+
+        .btn-new-tournament {
+            background: none;
+            border: 1px dashed var(--card-border);
+            color: #94a3b8;
+            border-radius: 8px;
+            padding: .35rem .75rem;
+            font-size: .82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .2s;
+        }
+
+        .btn-new-tournament:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" onclick="goHome()">🏏 T20 Fantasy Hub</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navContent">
+                <!-- Tournament dropdown -->
+                <div class="tournament-dropdown ms-3 dropdown">
+                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        id="tournamentDropdownBtn">
+                        Select Tournament
+                    </button>
+                    <ul class="dropdown-menu" id="tournamentDropdownMenu">
+                        <li><span class="dropdown-item text-secondary" style="font-size:.82rem;">Loading…</span></li>
+                    </ul>
+                </div>
+
+                <ul class="navbar-nav ms-auto" id="navLinks" style="display:none;">
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            onclick="showView('main'); return false;">Standings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            onclick="showView('players'); loadRoster(); return false;">Players</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            onclick="showView('addMatch'); loadExistingMatches(); return false;">Matches</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>T20 <span>Fantasy Hub</span></h1>
+            <p>Multi-tournament fantasy cricket — team standings, leaderboards, and player rosters.</p>
+        </div>
+    </section>
+
+    <!-- ============ TOURNAMENT PICKER VIEW ============ -->
+    <div id="tournamentPickerView" class="view-section active">
+        <div class="container pb-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="section-title mb-0">🏆 Tournaments</h2>
+                <button class="btn btn-accent" onclick="openCreateTournamentModal()">+ Create Tournament</button>
+            </div>
+            <div id="tournamentLoading" class="text-center py-3">
+                <div class="spinner-border text-info" role="status"></div>
+            </div>
+            <div id="tournamentGrid" class="row g-3" style="display:none;"></div>
+            <p id="tournamentEmpty" class="text-center text-secondary" style="display:none;">
+                No tournaments yet. Click "Create Tournament" to get started.
+            </p>
+        </div>
+    </div>
+
+    <!-- ============ MAIN VIEW (standings + leaderboard) ============ -->
+    <div id="mainView" class="view-section">
+        <div class="container pb-5">
+            <section id="teamStandings" class="mb-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="section-title mb-0">🏅 Team Standings</h2>
+                    <button class="btn btn-sm btn-accent" id="btnRecalculate" onclick="recalculatePoints()">🔄
+                        Recalculate</button>
+                </div>
+                <div class="glass-card">
+                    <div id="teamLoading" class="text-center py-3">
+                        <div class="spinner-border text-info"></div>
+                    </div>
+                    <div id="teamContent" style="display:none;">
+                        <div class="table-responsive">
+                            <table class="fantasy-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Team</th>
+                                        <th>Players</th>
+                                        <th class="text-end">Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="teamBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <p id="teamEmpty" class="text-center text-secondary mb-0" style="display:none;">No team data yet.
+                    </p>
+                </div>
+            </section>
+
+            <section id="fantasy" class="mb-5">
+                <h2 class="section-title">🏆 Fantasy Leaderboard</h2>
+                <div class="glass-card">
+                    <div id="fantasyLoading" class="text-center py-3">
+                        <div class="spinner-border text-info"></div>
+                    </div>
+                    <div id="fantasyContent" style="display:none;">
+                        <div class="table-responsive">
+                            <table class="fantasy-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Player</th>
+                                        <th>Team</th>
+                                        <th>M</th>
+                                        <th class="text-end">Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="fantasyBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <p id="fantasyEmpty" class="text-center text-secondary mb-0" style="display:none;">No fantasy data
+                        yet.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- ============ TEAM PLAYERS VIEW ============ -->
+    <div id="teamPlayersView" class="view-section">
+        <div class="container pb-5 pt-4">
+            <button class="btn-back mb-3" onclick="showView('main')">← Back to Standings</button>
+            <h2 class="section-title" id="teamPlayersTitle">Team Players</h2>
+            <div class="glass-card">
+                <div id="teamPlayersLoading" class="text-center py-3">
+                    <div class="spinner-border text-info"></div>
+                </div>
+                <div id="teamPlayersContent" style="display:none;">
+                    <div class="table-responsive">
+                        <table class="fantasy-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Player</th>
+                                    <th>M</th>
+                                    <th class="text-end">Points</th>
+                                </tr>
+                            </thead>
+                            <tbody id="teamPlayersBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <p id="teamPlayersEmpty" class="text-center text-secondary mb-0" style="display:none;">No players found.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ PLAYERS / ROSTER VIEW ============ -->
+    <div id="playersView" class="view-section">
+        <div class="container pb-5 pt-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="section-title mb-0">👥 Player Roster</h2>
+                <div class="d-flex gap-2">
+                    <label class="btn btn-sm btn-accent" style="margin-bottom:0;">
+                        📤 Upload CSV
+                        <input type="file" accept=".csv" id="csvUploadInput" style="display:none;"
+                            onchange="uploadCSV(this)">
+                    </label>
+                    <button class="btn btn-sm btn-accent" onclick="openAddPlayerModal()">+ Add Player</button>
+                </div>
+            </div>
+            <div class="glass-card">
+                <div id="rosterLoading" class="text-center py-3">
+                    <div class="spinner-border text-info"></div>
+                </div>
+                <div id="rosterContent" style="display:none;">
+                    <div class="table-responsive">
+                        <table class="fantasy-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Player Name</th>
+                                    <th>Team</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="rosterBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <p id="rosterEmpty" class="text-center text-secondary mb-0" style="display:none;">No players in roster.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ ADD MATCH VIEW ============ -->
+    <div id="addMatchView" class="view-section">
+        <div class="container pb-5 pt-4">
+            <h2 class="section-title">📋 Match Management</h2>
+            <div class="glass-card mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="mb-0">Scraped Matches</h5>
+                    <button class="btn btn-accent" onclick="openAddMatchModal()">+ Add Matches</button>
+                </div>
+                <div id="existingMatchesLoading" class="text-center py-3">
+                    <div class="spinner-border text-info"></div>
+                </div>
+                <div id="existingMatchesList" style="display:none;"></div>
+                <p id="existingMatchesEmpty" class="text-center text-secondary mb-0" style="display:none;">No matches
+                    yet.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ CREATE TOURNAMENT MODAL ============ -->
+    <div class="modal fade" id="createTournamentModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Create Tournament</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label text-secondary fw-semibold" style="font-size:.85rem;">Tournament ID
+                            (slug)</label>
+                        <input type="text" class="form-control" id="newTournamentId" placeholder="e.g. ipl_2025"
+                            style="background:rgba(255,255,255,.06);border:1px solid var(--card-border);color:#fff;border-radius:12px;padding:.65rem 1rem;">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-secondary fw-semibold" style="font-size:.85rem;">Display
+                            Name</label>
+                        <input type="text" class="form-control" id="newTournamentName"
+                            placeholder="e.g. Indian Premier League 2025"
+                            style="background:rgba(255,255,255,.06);border:1px solid var(--card-border);color:#fff;border-radius:12px;padding:.65rem 1rem;">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-secondary fw-semibold" style="font-size:.85rem;">Cricinfo Series URL <span class="text-secondary" style="font-weight:400;">(optional — enables auto-scrape)</span></label>
+                        <input type="url" class="form-control" id="newTournamentSeriesUrl"
+                            placeholder="https://www.espncricinfo.com/series/...(series-id)/match-results"
+                            style="background:rgba(255,255,255,.06);border:1px solid var(--card-border);color:#fff;border-radius:12px;padding:.65rem 1rem;">
+                        <div class="form-text text-secondary" style="font-size:.75rem;">Paste the Cricinfo series results page URL to enable daily auto-import of new matches.</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-accent" onclick="createTournament()">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ ADD PLAYER MODAL ============ -->
+    <div class="modal fade" id="addPlayerModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="addPlayerModalTitle">Add Player</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label text-secondary fw-semibold" style="font-size:.85rem;">Player
+                            Name</label>
+                        <input type="text" class="form-control" id="addPlayerName" placeholder="e.g. Virat Kohli"
+                            style="background:rgba(255,255,255,.06);border:1px solid var(--card-border);color:#fff;border-radius:12px;padding:.65rem 1rem;">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-secondary fw-semibold" style="font-size:.85rem;">Team</label>
+                        <input type="text" class="form-control" id="addPlayerTeam" placeholder="e.g. RSK"
+                            style="background:rgba(255,255,255,.06);border:1px solid var(--card-border);color:#fff;border-radius:12px;padding:.65rem 1rem;">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-accent" onclick="addPlayer()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ ADD MATCH MODAL ============ -->
+    <div class="modal fade" id="addMatchModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Scrape Match Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-secondary" style="font-size:.85rem;">Enter one or more matches to scrape.</p>
+                    <div id="matchEntriesContainer"></div>
+                    <button class="btn-add-entry mt-2" onclick="addMatchEntry()">+ Add another match</button>
+                    <div id="matchSubmitProgress" class="progress-log" style="display:none;"></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-accent" id="submitAllMatchesBtn" onclick="submitAllMatches()">Fetch & Score
+                        All</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ PLAYER DETAIL MODAL ============ -->
+    <div class="modal fade" id="playerDetailModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="playerDetailLabel">Player Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div>
+                            <h4 id="modalPlayerName" class="mb-0 fw-bold"></h4>
+                            <span id="modalPlayerTeam"></span>
+                            <span class="text-secondary ms-2" id="modalPlayerTotal"></span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="fantasy-table">
+                            <thead>
+                                <tr>
+                                    <th>Match</th>
+                                    <th class="text-end">Batting</th>
+                                    <th class="text-end">Bowling</th>
+                                    <th class="text-end">Fielding</th>
+                                    <th class="text-end">MOTM</th>
+                                    <th class="text-end">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="modalMatchesBody"></tbody>
+                            <tfoot id="modalTotalRow"></tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ CONFIRM ACTION MODAL ============ -->
+    <div class="modal fade" id="confirmActionModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="confirmActionTitle">Confirm</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="confirmActionMessage" class="mb-0"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm" style="background:rgba(255,255,255,.06);color:#94a3b8;border:1px solid var(--card-border);border-radius:10px;" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-sm" id="confirmActionBtn" style="background:rgba(239,68,68,.2);color:#fca5a5;border:1px solid rgba(239,68,68,.3);border-radius:10px;">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-3">T20 Fantasy Hub &mdash; For educational use only</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        /* ========== Global State ========== */
+        let tournamentSlug = null;
+        let existingMatchesData = [];
+
+
+        /* ========== Custom Confirm Modal (Chrome-safe) ========== */
+        let _confirmCallback = null;
+        function showConfirm(title, message, callback) {
+            document.getElementById('confirmActionTitle').textContent = title;
+            document.getElementById('confirmActionMessage').textContent = message;
+            _confirmCallback = callback;
+            const modal = new bootstrap.Modal(document.getElementById('confirmActionModal'));
+            modal.show();
+        }
+        document.getElementById('confirmActionBtn').addEventListener('click', () => {
+            bootstrap.Modal.getInstance(document.getElementById('confirmActionModal')).hide();
+            if (_confirmCallback) { _confirmCallback(); _confirmCallback = null; }
+        });
+
+        /* ========== Helpers ========== */
+        function showEl(el) { if (el) el.style.display = ''; }
+        function hideEl(el) { if (el) el.style.display = 'none'; }
+        function teamBadge(team) {
+            const name = team || 'Unknown';
+            // Generate a consistent hue from the team name
+            let hash = 0;
+            for (let i = 0; i < name.length; i++) {
+                hash = name.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            const hue = ((hash % 360) + 360) % 360;
+            const bg = `hsla(${hue}, 70%, 60%, 0.2)`;
+            const fg = `hsl(${hue}, 80%, 75%)`;
+            return `<span class="team-badge" style="background:${bg};color:${fg}">${name}</span>`;
+        }
+        function api(path) {
+            if (!tournamentSlug) throw new Error('No tournament selected');
+            return `/t/${tournamentSlug}${path}`;
+        }
+
+        /* ========== View Navigation ========== */
+        function showView(viewName) {
+            document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active'));
+            const el = document.getElementById(viewName + 'View');
+            if (el) el.classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function goHome() {
+            tournamentSlug = null;
+            hideEl(document.getElementById('navLinks'));
+            document.getElementById('tournamentDropdownBtn').textContent = 'Select Tournament';
+            showView('tournamentPicker');
+            loadTournaments();
+        }
+
+        function selectTournament(slug, name) {
+            tournamentSlug = slug;
+            document.getElementById('tournamentDropdownBtn').textContent = name;
+            showEl(document.getElementById('navLinks'));
+            showView('main');
+            fetchTeamsData();
+            fetchLeaderboardData();
+            // highlight active in dropdown
+            document.querySelectorAll('#tournamentDropdownMenu .dropdown-item.tournament-option').forEach(el => {
+                el.classList.toggle('active', el.dataset.slug === slug);
+            });
+        }
+
+        /* ========== Tournaments ========== */
+        let allTournaments = [];
+
+        function loadTournaments() {
+            const grid = document.getElementById('tournamentGrid');
+            const loading = document.getElementById('tournamentLoading');
+            const empty = document.getElementById('tournamentEmpty');
+            hideEl(grid); hideEl(empty); showEl(loading);
+
+            fetch('/tournaments')
+                .then(r => r.json())
+                .then(data => {
+                    allTournaments = data;
+                    hideEl(loading);
+
+                    // Populate nav dropdown
+                    populateTournamentDropdown(data);
+
+                    // Populate picker grid
+                    if (!data.length) { showEl(empty); return; }
+                    grid.innerHTML = '';
+                    data.forEach(t => {
+                        const col = document.createElement('div');
+                        col.className = 'col-md-4';
+                        col.innerHTML = `
+                            <div class="tournament-card" onclick="selectTournament('${t.tournament_id}', '${(t.name || t.tournament_id).replace(/'/g, "\\'")}')">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div class="tournament-badge">Tournament</div>
+                                    <button class="btn-delete-match" onclick="event.stopPropagation(); deleteTournament('${t.tournament_id}', '${(t.name || t.tournament_id).replace(/'/g, "\\'")}')" title="Delete tournament">🗑</button>
+                                </div>
+                                <h5>${t.name || t.tournament_id}</h5>
+                                <div class="meta">${t.player_count || 0} players in roster</div>
+                            </div>
+                        `;
+                        grid.appendChild(col);
+                    });
+                    showEl(grid);
+
+                    // Auto-select if only one
+                    if (data.length === 1) {
+                        selectTournament(data[0].tournament_id, data[0].name || data[0].tournament_id);
+                    }
+                })
+                .catch(() => { hideEl(loading); showEl(empty); });
+        }
+
+        function deleteTournament(slug, name) {
+            showConfirm('Delete Tournament', 'Delete "' + name + '"? This will permanently remove ALL matches, scores, and roster data.', () => {
+                fetch('/tournaments/' + encodeURIComponent(slug), { method: 'DELETE' })
+                    .then(r => r.json())
+                    .then(d => {
+                        if (d.error) { alert('Error: ' + d.error); return; }
+                        if (tournamentSlug === slug) goHome();
+                        else loadTournaments();
+                    })
+                    .catch(err => alert('Error: ' + err));
+            });
+        }
+
+        function populateTournamentDropdown(data) {
+            const menu = document.getElementById('tournamentDropdownMenu');
+            menu.innerHTML = '';
+            data.forEach(t => {
+                const name = t.name || t.tournament_id;
+                const li = document.createElement('li');
+                li.innerHTML = `<a class="dropdown-item tournament-option ${tournamentSlug === t.tournament_id ? 'active' : ''}" href="#" data-slug="${t.tournament_id}" onclick="selectTournament('${t.tournament_id}', '${name.replace(/'/g, "\\'")}'); return false;">${name} <span class='text-secondary' style='font-size:.75rem;'>(${t.player_count || 0}p)</span></a>`;
+                menu.appendChild(li);
+            });
+            if (data.length) {
+                menu.innerHTML += '<li><hr class="dropdown-divider"></li>';
+            }
+            menu.innerHTML += `<li><a class="dropdown-item btn-new-tournament" href="#" onclick="openCreateTournamentModal(); return false;">+ Create Tournament</a></li>`;
+        }
+
+        function openCreateTournamentModal() {
+            document.getElementById('newTournamentId').value = '';
+            document.getElementById('newTournamentName').value = '';
+            const seriesEl = document.getElementById('newTournamentSeriesUrl');
+            if (seriesEl) seriesEl.value = '';
+            new bootstrap.Modal(document.getElementById('createTournamentModal')).show();
+        }
+
+        function createTournament() {
+            const tid = document.getElementById('newTournamentId').value.trim();
+            const name = document.getElementById('newTournamentName').value.trim();
+            const seriesEl = document.getElementById('newTournamentSeriesUrl');
+            const seriesUrl = seriesEl ? seriesEl.value.trim() : '';
+            
+            if (!tid || !name) { alert('Both fields required'); return; }
+
+            fetch('/tournaments', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ tournament_id: tid, name: name, series_url: seriesUrl }),
+            })
+                .then(r => r.json())
+                .then(d => {
+                    if (d.error) { alert(d.error); return; }
+                    bootstrap.Modal.getInstance(document.getElementById('createTournamentModal')).hide();
+                    loadTournaments();
+                })
+                .catch(err => alert('Error: ' + err));
+        }
+
+        // Initial load
+        loadTournaments();
+
+        /* ========== Team Standings ========== */
+        function fetchTeamsData() {
+            showEl(document.getElementById('teamLoading'));
+            hideEl(document.getElementById('teamContent'));
+            hideEl(document.getElementById('teamEmpty'));
+
+            fetch(api('/fantasy/teams'))
+                .then(r => r.json())
+                .then(data => {
+                    hideEl(document.getElementById('teamLoading'));
+                    if (!data.length) { showEl(document.getElementById('teamEmpty')); return; }
+                    const tbody = document.getElementById('teamBody');
+                    tbody.innerHTML = '';
+                    data.forEach((t, i) => {
+                        const medal = i === 0 ? '🥇 ' : i === 1 ? '🥈 ' : i === 2 ? '🥉 ' : '';
+                        const tr = document.createElement('tr');
+                        tr.className = 'clickable-row';
+                        tr.onclick = () => loadTeamPlayers(t.team);
+                        tr.innerHTML = `
+                            <td class="rank-col">${i + 1}</td>
+                            <td>${medal}${teamBadge(t.team)}</td>
+                            <td>${t.player_count}</td>
+                            <td class="text-end pts-col">${Math.round(t.total_points)}</td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                    showEl(document.getElementById('teamContent'));
+                })
+                .catch(() => {
+                    hideEl(document.getElementById('teamLoading'));
+                    showEl(document.getElementById('teamEmpty'));
+                });
+        }
+
+        /* ========== Team Players ========== */
+        function loadTeamPlayers(teamName) {
+            showView('teamPlayers');
+            document.getElementById('teamPlayersTitle').innerHTML = teamBadge(teamName) + ' Players';
+            const tbody = document.getElementById('teamPlayersBody');
+            tbody.innerHTML = '';
+            hideEl(document.getElementById('teamPlayersContent'));
+            hideEl(document.getElementById('teamPlayersEmpty'));
+            showEl(document.getElementById('teamPlayersLoading'));
+
+            fetch(api('/fantasy/team/' + encodeURIComponent(teamName)))
+                .then(r => r.json())
+                .then(data => {
+                    hideEl(document.getElementById('teamPlayersLoading'));
+                    if (!data.length) { showEl(document.getElementById('teamPlayersEmpty')); return; }
+                    data.forEach((p, i) => {
+                        const tr = document.createElement('tr');
+                        tr.className = 'clickable-row';
+                        tr.onclick = () => showPlayerDetail(p);
+                        tr.innerHTML = `
+                            <td class="rank-col">${i + 1}</td>
+                            <td class="fw-semibold clickable-name">${p.player_name}</td>
+                            <td>${p.matches ? p.matches.length : 0}</td>
+                            <td class="text-end pts-col">${Math.round(p.total_points)}</td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                    showEl(document.getElementById('teamPlayersContent'));
+                })
+                .catch(() => {
+                    hideEl(document.getElementById('teamPlayersLoading'));
+                    showEl(document.getElementById('teamPlayersEmpty'));
+                });
+        }
+
+        /* ========== Player Detail Modal ========== */
+        function showPlayerDetail(player) {
+            document.getElementById('modalPlayerName').textContent = player.player_name;
+            document.getElementById('modalPlayerTeam').innerHTML = teamBadge(player.team);
+            document.getElementById('modalPlayerTotal').textContent = 'Total: ' + Math.round(player.total_points) + ' pts';
+
+            const tbody = document.getElementById('modalMatchesBody');
+            tbody.innerHTML = '';
+            const tfoot = document.getElementById('modalTotalRow');
+            tfoot.innerHTML = '';
+
+            let totBat = 0, totBowl = 0, totField = 0, totMom = 0, totAll = 0;
+
+            if (player.matches && player.matches.length) {
+                player.matches.forEach(m => {
+                    const bat = Math.round(m.batting_points || 0);
+                    const bowl = Math.round(m.bowling_points || 0);
+                    const field = Math.round(m.fielding_points || 0);
+                    const mom = Math.round(m.mom || 0);
+                    const tot = Math.round(m.total || 0);
+                    totBat += bat; totBowl += bowl; totField += field; totMom += mom; totAll += tot;
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${m.match_name || m.match_id}</td>
+                        <td class="text-end">${bat}</td>
+                        <td class="text-end">${bowl}</td>
+                        <td class="text-end">${field}</td>
+                        <td class="text-end">${mom}</td>
+                        <td class="text-end pts-col">${tot}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } else {
+                tbody.innerHTML = '<tr><td colspan="6" class="text-center text-secondary">No match data</td></tr>';
+            }
+
+            tfoot.innerHTML = `
+                <tr style="border-top:2px solid var(--card-border);">
+                    <td class="fw-bold">Total</td>
+                    <td class="text-end fw-bold">${totBat}</td>
+                    <td class="text-end fw-bold">${totBowl}</td>
+                    <td class="text-end fw-bold">${totField}</td>
+                    <td class="text-end fw-bold">${totMom}</td>
+                    <td class="text-end fw-bold pts-col">${totAll}</td>
+                </tr>
+            `;
+
+            new bootstrap.Modal(document.getElementById('playerDetailModal')).show();
+        }
+
+        /* ========== Fantasy Leaderboard ========== */
+        function fetchLeaderboardData() {
+            showEl(document.getElementById('fantasyLoading'));
+            hideEl(document.getElementById('fantasyContent'));
+            hideEl(document.getElementById('fantasyEmpty'));
+
+            fetch(api('/fantasy/leaderboard'))
+                .then(r => r.json())
+                .then(data => {
+                    hideEl(document.getElementById('fantasyLoading'));
+                    if (!data.length) { showEl(document.getElementById('fantasyEmpty')); return; }
+                    const tbody = document.getElementById('fantasyBody');
+                    tbody.innerHTML = '';
+                    data.forEach((p, i) => {
+                        const tr = document.createElement('tr');
+                        tr.className = 'clickable-row';
+                        tr.onclick = () => {
+                            fetch(api('/fantasy/player/' + encodeURIComponent(p.player_name)))
+                                .then(r => r.json())
+                                .then(d => { if (!d.error) showPlayerDetail(d); })
+                                .catch(() => { });
+                        };
+                        tr.innerHTML = `
+                            <td class="rank-col">${i + 1}</td>
+                            <td class="fw-semibold clickable-name">${p.player_name}</td>
+                            <td>${teamBadge(p.team)}</td>
+                            <td>${p.matches_played}</td>
+                            <td class="text-end pts-col">${Math.round(p.total_points)}</td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                    showEl(document.getElementById('fantasyContent'));
+                })
+                .catch(() => {
+                    hideEl(document.getElementById('fantasyLoading'));
+                    showEl(document.getElementById('fantasyEmpty'));
+                });
+        }
+
+        /* ========== Recalculate ========== */
+        function recalculatePoints() {
+            const btn = document.getElementById('btnRecalculate');
+            const original = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Recalculating...';
+
+            fetch(api('/fantasy/recalculate'), { method: 'POST' })
+                .then(r => r.json())
+                .then(d => {
+                    if (d.error) { alert('Error: ' + d.error); }
+                    else { fetchTeamsData(); fetchLeaderboardData(); }
+                })
+                .catch(err => alert('Error: ' + err))
+                .finally(() => { btn.innerHTML = original; btn.disabled = false; });
+        }
+
+        /* ========== Player Roster ========== */
+        function loadRoster() {
+            showEl(document.getElementById('rosterLoading'));
+            hideEl(document.getElementById('rosterContent'));
+            hideEl(document.getElementById('rosterEmpty'));
+
+            fetch(api('/players'))
+                .then(r => r.json())
+                .then(data => {
+                    hideEl(document.getElementById('rosterLoading'));
+                    if (!data.length) { showEl(document.getElementById('rosterEmpty')); return; }
+                    const tbody = document.getElementById('rosterBody');
+                    tbody.innerHTML = '';
+                    data.forEach((p, i) => {
+                        const tr = document.createElement('tr');
+                        const editBtn = document.createElement('button');
+                        editBtn.className = 'roster-action-btn';
+                        editBtn.textContent = '✏️';
+                        editBtn.addEventListener('click', (e) => { e.stopPropagation(); editPlayer(p.player_name, p.team || ''); });
+                        const delBtn = document.createElement('button');
+                        delBtn.className = 'roster-action-btn danger';
+                        delBtn.textContent = '🗑';
+                        delBtn.addEventListener('click', (e) => { e.stopPropagation(); removePlayer(p.player_name); });
+                        tr.innerHTML = `
+                            <td class="rank-col">${i + 1}</td>
+                            <td>${p.player_name}</td>
+                            <td>${teamBadge(p.team)}</td>
+                            <td class="roster-actions"></td>
+                        `;
+                        tr.querySelector('.roster-actions').appendChild(editBtn);
+                        tr.querySelector('.roster-actions').appendChild(delBtn);
+                        tbody.appendChild(tr);
+                    });
+                    showEl(document.getElementById('rosterContent'));
+                })
+                .catch(() => {
+                    hideEl(document.getElementById('rosterLoading'));
+                    showEl(document.getElementById('rosterEmpty'));
+                });
+        }
+
+        function uploadCSV(input) {
+            const file = input.files[0];
+            if (!file) return;
+            showConfirm('Replace Roster', 'This will replace the entire roster with the uploaded CSV. Continue?', () => {
+                const formData = new FormData();
+                formData.append('file', file);
+                fetch(api('/players'), { method: 'POST', body: formData })
+                    .then(r => r.json())
+                    .then(d => {
+                        if (d.error) { alert(d.error); return; }
+                        alert('\u2705 Uploaded ' + d.players_count + ' players');
+                        loadRoster();
+                    })
+                    .catch(err => alert('Error: ' + err))
+                    .finally(() => { input.value = ''; });
+            });
+        }
+
+        function openAddPlayerModal(name, team) {
+            document.getElementById('addPlayerName').value = name || '';
+            document.getElementById('addPlayerTeam').value = team || '';
+            document.getElementById('addPlayerModalTitle').textContent = name ? 'Edit Player' : 'Add Player';
+            new bootstrap.Modal(document.getElementById('addPlayerModal')).show();
+        }
+
+        function editPlayer(name, team) {
+            openAddPlayerModal(name, team);
+        }
+
+        function addPlayer() {
+            const name = document.getElementById('addPlayerName').value.trim();
+            const team = document.getElementById('addPlayerTeam').value.trim();
+            if (!name || !team) { alert('Both fields required'); return; }
+
+            fetch(api('/players'), {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ player_name: name, team: team }),
+            })
+                .then(r => r.json())
+                .then(d => {
+                    if (d.error) { alert(d.error); return; }
+                    bootstrap.Modal.getInstance(document.getElementById('addPlayerModal')).hide();
+                    loadRoster();
+                })
+                .catch(err => alert('Error: ' + err));
+        }
+
+        function removePlayer(name) {
+            showConfirm('Remove Player', 'Remove "' + name + '" from the roster?', () => {
+                fetch(api('/players/' + encodeURIComponent(name)), { method: 'DELETE' })
+                    .then(r => r.json())
+                    .then(d => {
+                        if (d.error) { alert(d.error); return; }
+                        loadRoster();
+                    })
+                    .catch(err => alert('Error: ' + err));
+            });
+        }
+
+        /* ========== Match Management ========== */
+        function loadExistingMatches() {
+            const list = document.getElementById('existingMatchesList');
+            const loading = document.getElementById('existingMatchesLoading');
+            const empty = document.getElementById('existingMatchesEmpty');
+            hideEl(list); hideEl(empty); showEl(loading);
+
+            fetch(api('/fantasy/matches'))
+                .then(r => r.json())
+                .then(data => {
+                    hideEl(loading);
+                    existingMatchesData = data;
+                    if (!data.length) { showEl(empty); return; }
+                    list.innerHTML = '';
+                    data.forEach(m => {
+                        const div = document.createElement('div');
+                        div.className = 'match-list-item';
+                        div.innerHTML = `
+                            <div>
+                                <div class="match-name">${m.match_name || 'Match'}</div>
+                                <div class="match-id-label">ID: ${m.match_id}</div>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="text-secondary" style="font-size:.75rem;">✓ Added</span>
+                                <button class="btn-delete-match" onclick="deleteMatch('${m.match_id}', '${(m.match_name || 'Match').replace(/'/g, "\\'")}')">🗑 Remove</button>
+                            </div>
+                        `;
+                        list.appendChild(div);
+                    });
+                    showEl(list);
+                })
+                .catch(() => { hideEl(loading); showEl(empty); });
+        }
+
+        function deleteMatch(matchId, matchName) {
+            showConfirm('Remove Match', 'Remove "' + matchName + '" (ID: ' + matchId + ')? Points will be recomputed.', () => {
+                fetch(api('/fantasy/match/' + encodeURIComponent(matchId)), { method: 'DELETE' })
+                    .then(r => r.json())
+                    .then(d => {
+                        if (d.error) { alert('Error: ' + d.error); return; }
+                        loadExistingMatches();
+                        fetchTeamsData();
+                        fetchLeaderboardData();
+                    })
+                    .catch(err => alert('Error: ' + err));
+            });
+        }
+
+        let matchEntryCounter = 0;
+
+        function openAddMatchModal() {
+            document.getElementById('matchEntriesContainer').innerHTML = '';
+            matchEntryCounter = 0;
+            hideEl(document.getElementById('matchSubmitProgress'));
+            document.getElementById('matchSubmitProgress').innerHTML = '';
+            addMatchEntry();
+            new bootstrap.Modal(document.getElementById('addMatchModal')).show();
+        }
+
+        function addMatchEntry() {
+            matchEntryCounter++;
+            const id = matchEntryCounter;
+            const container = document.getElementById('matchEntriesContainer');
+            const row = document.createElement('div');
+            row.className = 'match-entry-row';
+            row.id = 'matchEntry' + id;
+            row.innerHTML = `
+                <div class="flex-grow-1">
+                    <label class="form-label">ESPN Cricinfo Scorecard URL</label>
+                    <input type="url" class="form-control match-url-field" placeholder="https://www.espncricinfo.com/series/.../full-scorecard">
+                </div>
+                <button class="btn-remove-entry" title="Remove" onclick="document.getElementById('matchEntry${id}').remove()">✕</button>
+            `;
+            container.appendChild(row);
+        }
+
+        async function submitAllMatches() {
+            const rows = document.querySelectorAll('.match-entry-row');
+            const entries = [];
+            for (const row of rows) {
+                const murl = row.querySelector('.match-url-field').value.trim();
+                if (murl) entries.push({ url: murl });
+            }
+            if (!entries.length) { alert('Fill at least one scorecard URL.'); return; }
+
+            const btn = document.getElementById('submitAllMatchesBtn');
+            const progress = document.getElementById('matchSubmitProgress');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner-border"></span> Processing...';
+            progress.innerHTML = '';
+            showEl(progress);
+
+            for (let i = 0; i < entries.length; i++) {
+                const entry = entries[i];
+                const logItem = document.createElement('div');
+                logItem.className = 'log-item log-loading';
+                logItem.textContent = `[${i + 1}/${entries.length}] Fetching match...`;
+                progress.appendChild(logItem);
+                progress.scrollTop = progress.scrollHeight;
+
+                try {
+                    const url = api('/match/auto') + '?scorecard_url=' + encodeURIComponent(entry.url);
+                    const resp = await fetch(url);
+                    if (!resp.ok) throw new Error(await resp.text());
+                    const data = await resp.json();
+                    logItem.className = 'log-item log-success';
+                    logItem.textContent = `[${i + 1}/${entries.length}] ✅ ${data.match_name || 'Match'} fetched`;
+                } catch (err) {
+                    logItem.className = 'log-item log-error';
+                    logItem.textContent = `[${i + 1}/${entries.length}] ❌ ${err.message}`;
+                }
+                progress.scrollTop = progress.scrollHeight;
+            }
+
+            btn.disabled = false;
+            btn.textContent = 'Fetch & Score All';
+            loadExistingMatches();
+        }
+    </script>
+</body>
+
+</html>

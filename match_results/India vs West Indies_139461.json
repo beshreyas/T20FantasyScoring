@@ -1,0 +1,237 @@
+{
+  "match_id": "139461",
+  "batting": [
+    {
+      "player": "Shai Hope (c & wk)",
+      "dismissal": "b Varun Chakaravarthy",
+      "runs": 32,
+      "balls": 33,
+      "fours": 3,
+      "sixes": 1
+    },
+    {
+      "player": "Roston Chase",
+      "dismissal": "c Suryakumar Yadav b Jasprit Bumrah",
+      "runs": 40,
+      "balls": 25,
+      "fours": 5,
+      "sixes": 1
+    },
+    {
+      "player": "Shimron Hetmyer",
+      "dismissal": "c Sanju Samson b Jasprit Bumrah",
+      "runs": 27,
+      "balls": 12,
+      "fours": 1,
+      "sixes": 2
+    },
+    {
+      "player": "Sherfane Rutherford",
+      "dismissal": "c Sanju Samson b Hardik Pandya",
+      "runs": 14,
+      "balls": 9,
+      "fours": 0,
+      "sixes": 1
+    },
+    {
+      "player": "Rovman Powell",
+      "dismissal": "not out",
+      "runs": 34,
+      "balls": 19,
+      "fours": 3,
+      "sixes": 2
+    },
+    {
+      "player": "Jason Holder",
+      "dismissal": "not out",
+      "runs": 37,
+      "balls": 22,
+      "fours": 2,
+      "sixes": 3
+    },
+    {
+      "player": "Abhishek Sharma",
+      "dismissal": "c Shimron Hetmyer b Akeal Hosein",
+      "runs": 10,
+      "balls": 11,
+      "fours": 2,
+      "sixes": 0
+    },
+    {
+      "player": "Sanju Samson",
+      "dismissal": "not out",
+      "runs": 97,
+      "balls": 50,
+      "fours": 12,
+      "sixes": 4
+    },
+    {
+      "player": "Ishan Kishan",
+      "dismissal": "c Shimron Hetmyer b Jason Holder",
+      "runs": 10,
+      "balls": 6,
+      "fours": 2,
+      "sixes": 0
+    },
+    {
+      "player": "Suryakumar Yadav",
+      "dismissal": "c Sherfane Rutherford b Shamar Joseph",
+      "runs": 18,
+      "balls": 16,
+      "fours": 1,
+      "sixes": 1
+    },
+    {
+      "player": "Tilak Varma",
+      "dismissal": "c Shimron Hetmyer b Jason Holder",
+      "runs": 27,
+      "balls": 15,
+      "fours": 4,
+      "sixes": 1
+    },
+    {
+      "player": "Hardik Pandya",
+      "dismissal": "c Jason Holder b Shamar Joseph",
+      "runs": 17,
+      "balls": 14,
+      "fours": 2,
+      "sixes": 0
+    },
+    {
+      "player": "Shivam Dube",
+      "dismissal": "not out",
+      "runs": 8,
+      "balls": 4,
+      "fours": 2,
+      "sixes": 0
+    }
+  ],
+  "bowling": [
+    {
+      "player": "Arshdeep Singh",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 43,
+      "wickets": 0,
+      "dots": 0
+    },
+    {
+      "player": "Hardik Pandya",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 40,
+      "wickets": 1,
+      "dots": 0
+    },
+    {
+      "player": "Axar Patel",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 35,
+      "wickets": 0,
+      "dots": 0
+    },
+    {
+      "player": "Jasprit Bumrah",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 36,
+      "wickets": 2,
+      "dots": 0
+    },
+    {
+      "player": "Varun Chakaravarthy",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 40,
+      "wickets": 1,
+      "dots": 0
+    },
+    {
+      "player": "Akeal Hosein",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 22,
+      "wickets": 1,
+      "dots": 0
+    },
+    {
+      "player": "Matthew Forde",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 22,
+      "wickets": 0,
+      "dots": 0
+    },
+    {
+      "player": "Jason Holder",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 38,
+      "wickets": 2,
+      "dots": 0
+    },
+    {
+      "player": "Gudakesh Motie",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 18,
+      "wickets": 0,
+      "dots": 0
+    },
+    {
+      "player": "Romario Shepherd",
+      "balls": 14,
+      "maidens": 0,
+      "runs": 34,
+      "wickets": 0,
+      "dots": 0
+    },
+    {
+      "player": "Shamar Joseph",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 42,
+      "wickets": 2,
+      "dots": 0
+    },
+    {
+      "player": "Roston Chase",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 18,
+      "wickets": 0,
+      "dots": 0
+    }
+  ],
+  "fielding": {
+    "Suryakumar Yadav": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Sanju Samson": {
+      "catches": 2,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Shimron Hetmyer": {
+      "catches": 3,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Sherfane Rutherford": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Jason Holder": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    }
+  },
+  "scorecard_url": "https://www.cricbuzz.com/live-cricket-scorecard/139461/",
+  "man_of_the_match": null,
+  "cricinfo_url": "https://www.espncricinfo.com/series/icc-men-s-t20-world-cup-2025-26-1502138/india-vs-west-indies-52nd-match-super-eights-group-1-1512770/live-cricket-score"
+}

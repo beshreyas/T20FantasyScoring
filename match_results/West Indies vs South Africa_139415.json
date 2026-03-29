@@ -1,0 +1,234 @@
+{
+  "match_id": "139415",
+  "batting": [
+    {
+      "player": "Brandon King",
+      "dismissal": "c Quinton de Kock b Lungi Ngidi",
+      "runs": 21,
+      "balls": 11,
+      "fours": 5,
+      "sixes": 0
+    },
+    {
+      "player": "Shai Hope (c & wk)",
+      "dismissal": "c Quinton de Kock b Kagiso Rabada",
+      "runs": 16,
+      "balls": 6,
+      "fours": 1,
+      "sixes": 2
+    },
+    {
+      "player": "Shimron Hetmyer",
+      "dismissal": "c Keshav Maharaj b Kagiso Rabada",
+      "runs": 2,
+      "balls": 3,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Rovman Powell",
+      "dismissal": "c Dewald Brevis b Lungi Ngidi",
+      "runs": 9,
+      "balls": 11,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Roston Chase",
+      "dismissal": "b Lungi Ngidi",
+      "runs": 2,
+      "balls": 2,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Sherfane Rutherford",
+      "dismissal": "c Quinton de Kock b Corbin Bosch",
+      "runs": 12,
+      "balls": 10,
+      "fours": 0,
+      "sixes": 1
+    },
+    {
+      "player": "Jason Holder",
+      "dismissal": "run out (Quinton de Kock/Corbin Bosch)",
+      "runs": 49,
+      "balls": 31,
+      "fours": 4,
+      "sixes": 3
+    },
+    {
+      "player": "Matthew Forde",
+      "dismissal": "c Ryan Rickelton b Corbin Bosch",
+      "runs": 11,
+      "balls": 9,
+      "fours": 1,
+      "sixes": 1
+    },
+    {
+      "player": "Romario Shepherd",
+      "dismissal": "not out",
+      "runs": 52,
+      "balls": 37,
+      "fours": 3,
+      "sixes": 4
+    },
+    {
+      "player": "Gudakesh Motie",
+      "dismissal": "not out",
+      "runs": 0,
+      "balls": 0,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Aiden Markram",
+      "dismissal": "not out",
+      "runs": 82,
+      "balls": 46,
+      "fours": 7,
+      "sixes": 4
+    },
+    {
+      "player": "Quinton de Kock",
+      "dismissal": "c Jason Holder b Roston Chase",
+      "runs": 47,
+      "balls": 24,
+      "fours": 4,
+      "sixes": 4
+    },
+    {
+      "player": "Ryan Rickelton",
+      "dismissal": "not out",
+      "runs": 45,
+      "balls": 28,
+      "fours": 4,
+      "sixes": 2
+    }
+  ],
+  "bowling": [
+    {
+      "player": "Keshav Maharaj",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 43,
+      "wickets": 0,
+      "dots": 7
+    },
+    {
+      "player": "Marco Jansen",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 50,
+      "wickets": 0,
+      "dots": 12
+    },
+    {
+      "player": "Kagiso Rabada",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 22,
+      "wickets": 2,
+      "dots": 11
+    },
+    {
+      "player": "Lungi Ngidi",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 30,
+      "wickets": 3,
+      "dots": 12
+    },
+    {
+      "player": "Corbin Bosch",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 31,
+      "wickets": 2,
+      "dots": 11
+    },
+    {
+      "player": "Matthew Forde",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 30,
+      "wickets": 0,
+      "dots": 6
+    },
+    {
+      "player": "Romario Shepherd",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 22,
+      "wickets": 0,
+      "dots": 5
+    },
+    {
+      "player": "Jason Holder",
+      "balls": 19,
+      "maidens": 0,
+      "runs": 31,
+      "wickets": 0,
+      "dots": 4
+    },
+    {
+      "player": "Shamar Joseph",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 24,
+      "wickets": 0,
+      "dots": 4
+    },
+    {
+      "player": "Gudakesh Motie",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 24,
+      "wickets": 0,
+      "dots": 1
+    },
+    {
+      "player": "Roston Chase",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 46,
+      "wickets": 1,
+      "dots": 6
+    }
+  ],
+  "fielding": {
+    "Quinton de Kock": {
+      "catches": 3,
+      "runout": 1,
+      "stumpings": 0
+    },
+    "Keshav Maharaj": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Dewald Brevis": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Corbin Bosch": {
+      "catches": 0,
+      "runout": 1,
+      "stumpings": 0
+    },
+    "Ryan Rickelton": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Jason Holder": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    }
+  },
+  "scorecard_url": "https://www.cricbuzz.com/live-cricket-scorecard/139415/",
+  "man_of_the_match": "Aiden Markram",
+  "cricinfo_url": "https://www.espncricinfo.com/series/icc-men-s-t20-world-cup-2025-26-1502138/south-africa-vs-west-indies-47th-match-super-eights-group-1-1512765/full-scorecard"
+}

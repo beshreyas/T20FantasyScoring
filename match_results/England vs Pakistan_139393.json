@@ -1,0 +1,308 @@
+{
+  "match_id": "139393",
+  "batting": [
+    {
+      "player": "Sahibzada Farhan",
+      "dismissal": "lbw b Jamie Overton",
+      "runs": 63,
+      "balls": 45,
+      "fours": 7,
+      "sixes": 2
+    },
+    {
+      "player": "Saim Ayub",
+      "dismissal": "c Jacob Bethell b Jofra Archer",
+      "runs": 7,
+      "balls": 7,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Salman Agha",
+      "dismissal": "c Jamie Overton b Liam Dawson",
+      "runs": 5,
+      "balls": 6,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Babar Azam",
+      "dismissal": "b Jamie Overton",
+      "runs": 25,
+      "balls": 24,
+      "fours": 2,
+      "sixes": 0
+    },
+    {
+      "player": "Fakhar Zaman",
+      "dismissal": "c Liam Dawson b Adil Rashid",
+      "runs": 25,
+      "balls": 16,
+      "fours": 2,
+      "sixes": 2
+    },
+    {
+      "player": "Shadab Khan",
+      "dismissal": "run out (Jacob Bethell/Jos Buttler)",
+      "runs": 23,
+      "balls": 11,
+      "fours": 4,
+      "sixes": 0
+    },
+    {
+      "player": "Usman Khan",
+      "dismissal": "c Jamie Overton b Liam Dawson",
+      "runs": 8,
+      "balls": 5,
+      "fours": 0,
+      "sixes": 1
+    },
+    {
+      "player": "Mohammad Nawaz",
+      "dismissal": "lbw b Liam Dawson",
+      "runs": 0,
+      "balls": 1,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Shaheen Afridi",
+      "dismissal": "c Sam Curran b Jofra Archer",
+      "runs": 2,
+      "balls": 3,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Salman Mirza",
+      "dismissal": "not out",
+      "runs": 2,
+      "balls": 3,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Philip Salt",
+      "dismissal": "c Usman Khan b Shaheen Afridi",
+      "runs": 0,
+      "balls": 1,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Jos Buttler",
+      "dismissal": "c Usman Khan b Shaheen Afridi",
+      "runs": 2,
+      "balls": 3,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Harry Brook",
+      "dismissal": "b Shaheen Afridi",
+      "runs": 100,
+      "balls": 51,
+      "fours": 10,
+      "sixes": 4
+    },
+    {
+      "player": "Jacob Bethell",
+      "dismissal": "c Sahibzada Farhan b Shaheen Afridi",
+      "runs": 8,
+      "balls": 10,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Tom Banton",
+      "dismissal": "c Usman Khan b Usman Tariq",
+      "runs": 2,
+      "balls": 6,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Sam Curran",
+      "dismissal": "c Mohammad Nawaz b Usman Tariq",
+      "runs": 16,
+      "balls": 15,
+      "fours": 1,
+      "sixes": 0
+    },
+    {
+      "player": "Will Jacks",
+      "dismissal": "b Mohammad Nawaz",
+      "runs": 28,
+      "balls": 23,
+      "fours": 1,
+      "sixes": 2
+    },
+    {
+      "player": "Jamie Overton",
+      "dismissal": "st Usman Khan b Mohammad Nawaz",
+      "runs": 0,
+      "balls": 3,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Liam Dawson",
+      "dismissal": "not out",
+      "runs": 1,
+      "balls": 1,
+      "fours": 0,
+      "sixes": 0
+    },
+    {
+      "player": "Jofra Archer",
+      "dismissal": "not out",
+      "runs": 5,
+      "balls": 2,
+      "fours": 1,
+      "sixes": 0
+    }
+  ],
+  "bowling": [
+    {
+      "player": "Jofra Archer",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 32,
+      "wickets": 2,
+      "dots": 10
+    },
+    {
+      "player": "Jamie Overton",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 26,
+      "wickets": 2,
+      "dots": 8
+    },
+    {
+      "player": "Liam Dawson",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 24,
+      "wickets": 3,
+      "dots": 12
+    },
+    {
+      "player": "Sam Curran",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 24,
+      "wickets": 0,
+      "dots": 3
+    },
+    {
+      "player": "Adil Rashid",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 31,
+      "wickets": 1,
+      "dots": 11
+    },
+    {
+      "player": "Will Jacks",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 27,
+      "wickets": 0,
+      "dots": 2
+    },
+    {
+      "player": "Shaheen Afridi",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 30,
+      "wickets": 4,
+      "dots": 0
+    },
+    {
+      "player": "Salman Mirza",
+      "balls": 19,
+      "maidens": 0,
+      "runs": 26,
+      "wickets": 0,
+      "dots": 12
+    },
+    {
+      "player": "Saim Ayub",
+      "balls": 12,
+      "maidens": 0,
+      "runs": 21,
+      "wickets": 0,
+      "dots": 1
+    },
+    {
+      "player": "Mohammad Nawaz",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 26,
+      "wickets": 2,
+      "dots": 6
+    },
+    {
+      "player": "Shadab Khan",
+      "balls": 18,
+      "maidens": 0,
+      "runs": 31,
+      "wickets": 0,
+      "dots": 4
+    },
+    {
+      "player": "Usman Tariq",
+      "balls": 24,
+      "maidens": 0,
+      "runs": 31,
+      "wickets": 2,
+      "dots": 5
+    }
+  ],
+  "fielding": {
+    "Jacob Bethell": {
+      "catches": 1,
+      "runout": 1,
+      "stumpings": 0
+    },
+    "Jamie Overton": {
+      "catches": 2,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Liam Dawson": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Jos Buttler": {
+      "catches": 0,
+      "runout": 1,
+      "stumpings": 0
+    },
+    "Sam Curran": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Usman Khan": {
+      "catches": 3,
+      "runout": 0,
+      "stumpings": 1
+    },
+    "Sahibzada Farhan": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    },
+    "Mohammad Nawaz": {
+      "catches": 1,
+      "runout": 0,
+      "stumpings": 0
+    }
+  },
+  "scorecard_url": "https://www.cricbuzz.com/live-cricket-scorecard/139393/",
+  "man_of_the_match": "Harry Brook",
+  "cricinfo_url": "https://www.espncricinfo.com/series/icc-men-s-t20-world-cup-2025-26-1502138/england-vs-pakistan-45th-match-super-eights-group-2-1512763/full-scorecard"
+}
