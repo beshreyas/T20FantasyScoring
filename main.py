@@ -277,7 +277,7 @@ def fantasy_delete_match(slug, match_id):
 # Auto-scrape endpoints
 # ---------------------------------------------------------------------------
 
-@app.route('/auto-scrape/trigger', methods=['POST'])
+@app.route('/auto-scrape/trigger', methods=['GET', 'POST'])
 def trigger_auto_scrape():
     """Manually trigger the auto-scrape agent."""
     global _last_auto_scrape
